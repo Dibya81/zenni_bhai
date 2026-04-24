@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health & Life — Cosmic Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--cosmos:#03010a;--gold:#c9a84c;--gold-light:#e8c97a;--gold-dim:#7a6230;--silver:#a8b8d0;--ruby:#c0234a;--sapphire-light:#2a5abf;--emerald-light:#28a05a;--text-primary:#f0e8d8;--text-secondary:#a8a090;--text-dim:#6a6258;--border:rgba(201,168,76,0.15);--border-bright:rgba(201,168,76,0.4);--card-bg:rgba(21,13,46,0.7);--card-border:rgba(201,168,76,0.2);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cosmos);color:var(--text-primary);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(1px 1px at 15% 20%,rgba(255,255,255,.7) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 55% 30%,rgba(255,255,255,.8) 0%,transparent 100%),radial-gradient(1px 1px at 80% 60%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 30% 70%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(2px 2px at 70% 15%,rgba(201,168,76,.25) 0%,transparent 100%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 60% 40% at 20% 30%,rgba(26,107,58,.08) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 80% 70%,rgba(139,26,58,.1) 0%,transparent 60%);pointer-events:none;z-index:0;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:60px;background:rgba(3,1,10,.9);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);}
+.nav-brand{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;}
+.nav-back{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-dim);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
+.nav-back:hover{color:var(--gold);}
+.nav-date{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:.05em;}
+
+.page{min-height:100vh;padding-top:60px;position:relative;z-index:1;}
+.page-header{padding:3.5rem 2rem 1.5rem;text-align:center;max-width:800px;margin:0 auto;}
+.page-title{font-family:'Cinzel',serif;font-size:clamp(1.7rem,4vw,2.8rem);color:var(--gold);letter-spacing:.08em;margin-bottom:.5rem;}
+.page-desc{font-size:14.5px;color:var(--text-secondary);font-style:italic;}
+.divider{display:flex;align-items:center;gap:1rem;max-width:400px;margin:1.2rem auto;}
+.divider-line{flex:1;height:.5px;background:var(--border-bright);}
+.divider-gem{width:8px;height:8px;background:var(--gold);transform:rotate(45deg);}
+
+.main-content{max-width:1100px;margin:0 auto;padding:0 2rem 6rem;}
+.section-header{margin-bottom:1.8rem;padding-top:.8rem;}
+.section-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--text-dim);text-transform:uppercase;margin-bottom:.4rem;}
+.section-h2{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--text-primary);letter-spacing:.06em;}
+
+/* Body wheel diagram */
+.body-diagram{display:flex;justify-content:center;margin:2rem 0 3rem;}
+svg.body-svg text{font-family:'Cinzel',serif;}
+
+/* Health timeline */
+.health-timeline{position:relative;padding-left:60px;margin-bottom:3rem;}
+.health-timeline::before{content:'';position:absolute;left:24px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--emerald-light) 20%,var(--emerald-light) 80%,transparent);}
+.health-entry{position:relative;margin-bottom:1.8rem;opacity:0;transform:translateX(-15px);transition:opacity .5s,transform .5s;}
+.health-entry.visible{opacity:1;transform:translateX(0);}
+.health-node{position:absolute;left:-47px;top:8px;width:11px;height:11px;border-radius:50%;border:2px solid;background:var(--cosmos);}
+.h-period{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:.06em;margin-bottom:4px;}
+.h-card{background:var(--card-bg);border:1px solid var(--card-border);padding:1.3rem 1.5rem;border-left:3px solid;}
+.h-title{font-family:'Cinzel',serif;font-size:.95rem;margin-bottom:.5rem;}
+.h-body{font-size:13.5px;color:var(--text-secondary);line-height:1.7;}
+.h-tips{margin-top:.8rem;display:flex;flex-wrap:wrap;gap:5px;}
+.h-tip{font-family:'Space Mono',monospace;font-size:8.5px;padding:3px 9px;border:1px solid;letter-spacing:.05em;text-transform:uppercase;}
+
+/* Relationship grid */
+.rel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-bottom:3rem;}
+.rel-card{background:var(--card-bg);border:1px solid var(--card-border);padding:1.6rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;}
+.rel-card:hover{border-color:var(--border-bright);transform:translateY(-3px);}
+.rel-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity .3s;}
+.rel-card:hover::before{opacity:1;}
+.rel-icon{font-size:2rem;margin-bottom:.8rem;display:block;}
+.rel-title{font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold);margin-bottom:.5rem;}
+.rel-body{font-size:13.5px;color:var(--text-secondary);line-height:1.7;}
+
+/* Spiritual path */
+.spiritual-path{background:linear-gradient(135deg,rgba(107,45,139,.07),rgba(26,58,122,.07));border:1px solid rgba(107,45,139,.2);border-left:4px solid var(--gold-dim);padding:2rem;margin-bottom:2rem;}
+.sp-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);margin-bottom:1rem;letter-spacing:.05em;}
+.sp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;}
+.sp-item{background:rgba(255,255,255,.03);padding:1rem;border:1px solid rgba(201,168,76,.1);}
+.sp-label{font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;}
+.sp-value{font-size:13.5px;color:var(--text-secondary);line-height:1.6;}
+
+/* Life phases radial */
+.life-phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:3rem;}
+.lp-card{background:var(--card-bg);padding:1.3rem;border-top:2px solid transparent;}
+.lp-age{font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);letter-spacing:.06em;margin-bottom:5px;}
+.lp-theme{font-family:'Cinzel',serif;font-size:.87rem;color:var(--gold);margin-bottom:5px;}
+.lp-body{font-size:12px;color:var(--text-secondary);line-height:1.55;}
+.lp-card.lp-now{border-top-color:var(--gold);}
+.lp-card.lp-next{border-top-color:var(--emerald-light);}
+.lp-card.lp-peak{border-top-color:var(--sapphire-light);}
+
+.fade-up{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* Bottom nav */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:999;display:flex;justify-content:center;padding:.6rem;background:rgba(3,1,10,.92);backdrop-filter:blur(8px);border-top:.5px solid var(--border);gap:3px;}
+.bnav-btn{padding:5px 12px;font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;border:1px solid transparent;background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s;}
+.bnav-btn:hover{color:var(--text-secondary);border-color:var(--border);}
+.bnav-btn.active{color:var(--gold);border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.06);}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Cosmic Blueprint</div>
+  <a class="nav-back" href="index.html">← Main Chart</a>
+  <div class="nav-date">Health & Life — Supplementary</div>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <div class="page-title">Health, Relationships & Spiritual Path</div>
+    <div class="page-desc">Supporting life areas · Holistic view of your cosmic blueprint</div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line"></div></div>
+  </div>
+
+  <div class="main-content">
+
+    <!-- Body Wheel SVG -->
+    <div class="section-header fade-up">
+      <div class="section-tag">Ayurvedic Body Map</div>
+      <div class="section-h2">Taurus Lagna Constitution</div>
+    </div>
+
+    <div class="body-diagram fade-up">
+      <svg class="body-svg" width="520" height="320" viewBox="0 0 520 320" style="background:rgba(7,3,15,.8);border:1px solid rgba(201,168,76,.15)">
+        <!-- Central figure -->
+        <ellipse cx="260" cy="60" rx="32" ry="32" fill="none" stroke="rgba(201,168,76,.5)" stroke-width="1.5"/>
+        <text x="260" y="65" text-anchor="middle" font-size="22" fill="rgba(201,168,76,.8)">☽</text>
+        <!-- Throat -->
+        <rect x="244" y="96" width="32" height="22" rx="4" fill="none" stroke="rgba(201,168,76,.6)" stroke-width="1.5"/>
+        <text x="260" y="112" text-anchor="middle" font-size="9" fill="rgba(201,168,76,.8)" font-family="'Cinzel',serif">THROAT</text>
+        <!-- Torso -->
+        <rect x="226" y="122" width="68" height="80" rx="4" fill="none" stroke="rgba(168,184,208,.3)" stroke-width="1"/>
+        <!-- Heart zone -->
+        <ellipse cx="260" cy="145" rx="22" ry="18" fill="rgba(192,35,74,.08)" stroke="rgba(192,35,74,.4)" stroke-width="1"/>
+        <text x="260" y="150" text-anchor="middle" font-size="9" fill="#c0234a" font-family="'Cinzel',serif">HEART</text>
+        <!-- Stomach zone -->
+        <ellipse cx="260" cy="178" rx="20" ry="16" fill="rgba(40,160,90,.06)" stroke="rgba(40,160,90,.3)" stroke-width="1"/>
+        <text x="260" y="183" text-anchor="middle" font-size="9" fill="#28a05a" font-family="'Cinzel',serif">STOMACH</text>
+        <!-- Arms -->
+        <rect x="180" y="122" width="44" height="16" rx="8" fill="none" stroke="rgba(168,184,208,.25)" stroke-width="1"/>
+        <rect x="296" y="122" width="44" height="16" rx="8" fill="none" stroke="rgba(168,184,208,.25)" stroke-width="1"/>
+        <!-- Legs -->
+        <rect x="236" y="206" width="24" height="70" rx="6" fill="none" stroke="rgba(168,184,208,.2)" stroke-width="1"/>
+        <rect x="260" y="206" width="24" height="70" rx="6" fill="none" stroke="rgba(168,184,208,.2)" stroke-width="1"/>
+
+        <!-- Labels left -->
+        <line x1="170" y1="62" x2="228" y2="62" stroke="rgba(201,168,76,.2)" stroke-width=".5" stroke-dasharray="3,3"/>
+        <text x="160" y="58" text-anchor="end" font-size="10" fill="rgba(201,168,76,.7)" font-family="'Cinzel',serif">Head / Mind</text>
+        <text x="160" y="70" text-anchor="end" font-size="9" fill="var(--text-dim)" font-family="'Crimson Pro',serif">Moon in Virgo</text>
+
+        <line x1="168" y1="107" x2="244" y2="107" stroke="rgba(201,168,76,.2)" stroke-width=".5" stroke-dasharray="3,3"/>
+        <text x="158" y="103" text-anchor="end" font-size="10" fill="rgba(201,168,76,.7)" font-family="'Cinzel',serif">Throat / Voice</text>
+        <text x="158" y="115" text-anchor="end" font-size="9" fill="var(--text-dim)" font-family="'Crimson Pro',serif">Taurus rules throat</text>
+
+        <line x1="162" y1="143" x2="238" y2="143" stroke="rgba(192,35,74,.3)" stroke-width=".5" stroke-dasharray="3,3"/>
+        <text x="152" y="139" text-anchor="end" font-size="10" fill="#c0234a" font-family="'Cinzel',serif">Heart / Chest</text>
+        <text x="152" y="151" text-anchor="end" font-size="9" fill="var(--text-dim)" font-family="'Crimson Pro',serif">Sun in Cancer 3H</text>
+
+        <!-- Labels right -->
+        <line x1="352" y1="130" x2="410" y2="130" stroke="rgba(168,184,208,.3)" stroke-width=".5" stroke-dasharray="3,3"/>
+        <text x="420" y="126" text-anchor="start" font-size="10" fill="rgba(168,184,208,.7)" font-family="'Cinzel',serif">Arms / Shoulders</text>
+        <text x="420" y="138" text-anchor="start" font-size="9" fill="var(--text-dim)" font-family="'Crimson Pro',serif">Mercury 3H</text>
+
+        <line x1="352" y1="178" x2="410" y2="178" stroke="rgba(40,160,90,.3)" stroke-width=".5" stroke-dasharray="3,3"/>
+        <text x="420" y="174" text-anchor="start" font-size="10" fill="#28a05a" font-family="'Cinzel',serif">Digestive System</text>
+        <text x="420" y="186" text-anchor="start" font-size="9" fill="var(--text-dim)" font-family="'Crimson Pro',serif">Virgo Moon / 6H</text>
+
+        <line x1="295" y1="245" x2="410" y2="245" stroke="rgba(201,168,76,.2)" stroke-width=".5" stroke-dasharray="3,3"/>
+        <text x="420" y="241" text-anchor="start" font-size="10" fill="rgba(201,168,76,.7)" font-family="'Cinzel',serif">Joints / Bones</text>
+        <text x="420" y="253" text-anchor="start" font-size="9" fill="var(--text-dim)" font-family="'Crimson Pro',serif">Saturn 10H watch</text>
+
+        <!-- Dosha label -->
+        <rect x="196" y="285" width="128" height="24" rx="3" fill="rgba(201,168,76,.06)" stroke="rgba(201,168,76,.2)" stroke-width=".5"/>
+        <text x="260" y="301" text-anchor="middle" font-size="10" fill="var(--gold)" font-family="'Cinzel',serif" letter-spacing="2">KAPHA-VATA PRAKRITI</text>
+      </svg>
+    </div>
+
+    <!-- Health timeline -->
+    <div class="section-header fade-up">
+      <div class="section-tag">Health Watch Periods</div>
+      <div class="section-h2">When to Be Especially Mindful</div>
+    </div>
+
+    <div class="health-timeline" id="health-timeline"></div>
+
+    <!-- Life phases -->
+    <div class="section-header fade-up">
+      <div class="section-tag">Life Arc Overview</div>
+      <div class="section-h2">Your Decade-by-Decade Journey</div>
+    </div>
+    <div class="life-phases fade-up" id="life-phases"></div>
+
+    <!-- Relationships -->
+    <div class="section-header fade-up">
+      <div class="section-tag">Venus, Mars & the 7th House</div>
+      <div class="section-h2">Love & Relationships</div>
+    </div>
+    <div class="rel-grid fade-up" id="rel-grid"></div>
+
+    <!-- Spiritual path -->
+    <div class="section-header fade-up">
+      <div class="section-tag">Jupiter in 11th · Ketu in 7th</div>
+      <div class="section-h2">Spiritual Path & Soul Purpose</div>
+    </div>
+    <div class="spiritual-path fade-up">
+      <div class="sp-title">✦ Your Soul's Blueprint</div>
+      <div class="sp-grid" id="sp-grid"></div>
+    </div>
+
+    <!-- Daily routine -->
+    <div class="section-header fade-up">
+      <div class="section-tag">Dinacharya Guidance</div>
+      <div class="section-h2">Ideal Daily Rhythm for Your Chart</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:3rem" class="fade-up" id="routine-grid"></div>
+
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <button class="bnav-btn" onclick="location.href='index.html'">← Main</button>
+  <button class="bnav-btn active">Health & Life</button>
+  <button class="bnav-btn" onclick="location.href='summary.html'">Summary →</button>
+</div>
+
+<script>
+const HEALTH_DATA = [
+  {period:'2025–2026', color:'#28a05a', dotColor:'#28a05a', accent:'rgba(40,160,90,.3)',
+   title:'Generally Strong — Moon Period Wrapping', level:'Good',
+   body:'Moon Mahadasha in its closing phase is generally protective for health. Moon in Virgo gives a naturally health-conscious, detail-oriented approach to the body. Digestive sensitivity is the primary watchpoint — avoid erratic eating patterns. Mental health is the bigger concern: Moon-Rahu antardasha can bring anxiety, restlessness, and sleep disturbances in some individuals.',
+   tips:[{t:'Prioritize sleep',c:'rgba(40,160,90,.2)',tc:'#28a05a'},{t:'Regular meal times',c:'rgba(40,160,90,.2)',tc:'#28a05a'},{t:'Limit screen time before bed',c:'rgba(40,160,90,.2)',tc:'#28a05a'}]},
+  {period:'2026–2027', color:'#c9a84c', dotColor:'#c9a84c', accent:'rgba(201,168,76,.3)',
+   title:'Mars Begins — Energy High, Injury Risk', level:'Watch',
+   body:'Mars Mahadasha activation brings tremendous physical energy — but also impulsiveness and accident-proneness. Mars in Scorpio governs the generative organs and can also indicate inflammation or fever. The transition period (late 2026) may cause physical stress from rapid life changes and new professional demands. Build and protect sleep hygiene as a non-negotiable.',
+   tips:[{t:'Avoid overexertion',c:'rgba(201,168,76,.15)',tc:'var(--gold)'},{t:'Warm-up before exercise',c:'rgba(201,168,76,.15)',tc:'var(--gold)'},{t:'Anti-inflammatory diet',c:'rgba(201,168,76,.15)',tc:'var(--gold)'},{t:'Regular physical activity',c:'rgba(201,168,76,.15)',tc:'var(--gold)'}]},
+  {period:'2027–2028', color:'#d04040', dotColor:'#d04040', accent:'rgba(208,64,64,.3)',
+   title:'Mars-Rahu — Stress & Burnout Watch', level:'Caution',
+   body:'Mars-Rahu antardasha is the peak professional explosion period — but also the highest stress period for health. Rahu amplifies Mars\'s fiery, inflammatory qualities. Possible health challenges: stress-related illness, overwork leading to adrenal fatigue, inflammation, eye strain from screen work, and tension headaches. Blood pressure should be monitored. This period demands conscious rest as a counter-balance to ambition.',
+   tips:[{t:'Weekly rest day (mandatory)',c:'rgba(208,64,64,.15)',tc:'#e05070'},{t:'Daily yoga or walk',c:'rgba(208,64,64,.15)',tc:'#e05070'},{t:'Limit caffeine',c:'rgba(208,64,64,.15)',tc:'#e05070'},{t:'Regular health checkups',c:'rgba(208,64,64,.15)',tc:'#e05070'}]},
+  {period:'2029', color:'#2a5abf', dotColor:'#2a5abf', accent:'rgba(42,90,191,.3)',
+   title:'Mars-Jupiter — Vitality Restored', level:'Good',
+   body:'Jupiter\'s influence brings health restoration, optimism, and the wisdom to care for the body. Jupiter in Pisces has a naturally healing, expansive quality. Physical vitality is high during this antardasha. This is an excellent period for adopting long-term health habits that will serve you for decades. Weight management and moderation in diet become important as Jupiter can cause weight gain through indulgence.',
+   tips:[{t:'Establish long-term health habits',c:'rgba(42,90,191,.15)',tc:'#6a9be8'},{t:'Monitor weight & diet',c:'rgba(42,90,191,.15)',tc:'#6a9be8'},{t:'Spiritual retreat beneficial',c:'rgba(42,90,191,.15)',tc:'#6a9be8'}]},
+  {period:'2030', color:'#8090a0', dotColor:'#8090a0', accent:'rgba(128,144,160,.3)',
+   title:'Mars-Saturn — Joints & Fatigue Watch', level:'Moderate',
+   body:'Saturn\'s influence during this antardasha can cause joint issues, chronic fatigue, or skin conditions for some individuals. Saturn rules bones and teeth — dental care and bone health should be prioritized. The pace of life should deliberately slow. Regular sleep schedule, warm foods, and grounding practices are essential. This is not a period for extreme physical exertion.',
+   tips:[{t:'Joint health: yoga, stretching',c:'rgba(128,144,160,.15)',tc:'#a8b8d0'},{t:'Calcium & vitamin D',c:'rgba(128,144,160,.15)',tc:'#a8b8d0'},{t:'Dental checkup',c:'rgba(128,144,160,.15)',tc:'#a8b8d0'},{t:'Early bedtime',c:'rgba(128,144,160,.15)',tc:'#a8b8d0'}]}
+];
+
+const LIFE_PHASES = [
+  {age:'Ages 0–10', theme:'Moon Early', body:'Formative emotional foundation. Sensitive, learning-oriented childhood.',cls:''},
+  {age:'Ages 10–20', theme:'Moon Closing', body:'Academic prime. Building intellectual identity. Moon Mahadasha shapes values.',cls:'lp-now'},
+  {age:'Ages 20–27', theme:'Mars Rising', body:'Career ignition, competitive achievement, rapid growth, and first wealth.',cls:'lp-next'},
+  {age:'Ages 27–33', theme:'Mars-Rahu Peak', body:'Maximum ambition, foreign connections, unconventional success, possible relocation.',cls:'lp-next'},
+  {age:'Ages 33–51', theme:'Rahu Mahadasha', body:'The defining professional period. Legacy, innovation, and global-scale impact.',cls:'lp-peak'},
+  {age:'Ages 51+', theme:'Jupiter & Beyond', body:'Wisdom, philanthropy, institutional legacy, and spiritual fulfillment.',cls:''}
+];
+
+const REL_DATA = [
+  {icon:'💑', title:'Romantic Partnerships', color:'rgba(192,35,74,.3)', gradColor:'#c0234a',
+   body:'Mars and Ketu in the 7th house make romantic partnerships intense, transformative, and occasionally turbulent. Early relationships (before age 26) may feel incomplete or unusual. You are attracted to powerful, mysterious individuals. Venus in Gemini gives charm and social ease, but Moon in Virgo can be overly critical of partners. Best relationship outcomes come through patience, clear communication, and choosing a partner who appreciates depth over superficiality.'},
+  {icon:'🤝', title:'Business Partnerships', color:'rgba(26,58,122,.3)', gradColor:'#2a5abf',
+   body:'The 7th house governs business partnerships — and Mars in Scorpio here is actually excellent for strategic business alliances. You bring intensity, investigative ability, and competitive drive to partnerships. Jupiter in the 11th blesses your professional network. Choose business partners who complement your strengths: look for analytical thinkers with diplomatic skills (you provide the fire; they provide the groundedness).'},
+  {icon:'👨‍👩‍👧', title:'Family & Parents', color:'rgba(40,160,90,.3)', gradColor:'#28a05a',
+   body:'Venus as Lagna lord in the 2nd house indicates a close, supportive family environment that contributes to early financial and emotional stability. Moon in the 5th in Virgo suggests a parent (likely mother) who instilled strong intellectual values and attention to detail. Family bonds are a source of grounding throughout the Mars Mahadasha storm. Nurture these relationships.'},
+  {icon:'👫', title:'Siblings & Close Friends', color:'rgba(201,168,76,.3)', gradColor:'var(--gold)',
+   body:'Sun, Mercury, and Rahu in the 3rd house (house of siblings and close friends) creates an intense, intellectual, and sometimes competitive sibling dynamic. Friends who are intellectually stimulating and career-oriented are your natural tribe. Jupiter in the 11th blesses you with a network of influential, wise, and genuinely supportive friends. Network actively — your social capital becomes financial capital.'},
+  {icon:'💍', title:'Marriage Timing', color:'rgba(107,45,139,.3)', gradColor:'#9b4dbf',
+   body:'With Mars-Ketu in the 7th, serious committed relationships work better after age 26–27. The Mars Mahadasha (2026–2033) is professionally intense — relationships started in haste during this period may struggle. The best window for marriage is during Jupiter antardasha within Mars MD (Jan 2029–Feb 2030), or after the Rahu Mahadasha begins in 2033. Venus as Lagna lord promises a fulfilling, aesthetically beautiful partnership when the timing is right.'},
+  {icon:'🧘', title:'Relationship with Self', color:'rgba(168,184,208,.3)', gradColor:'#a8b8d0',
+   body:'Moon in Virgo in the 5th house gives strong self-analytical ability — which can become self-criticism if unchecked. Ketu in the 7th suggests a karmic inclination toward inner wisdom over external validation. The most important relationship in your life is with your own mind. Saturn in the 10th rewards those who work in disciplined solitude. Build a strong relationship with yourself first — everything else follows.'}
+];
+
+const SPIRITUAL = [
+  {label:'Primary Path', value:'Karma Yoga — action dedicated to purpose. Saturn in 10th indicates enlightenment through disciplined work, contribution, and building lasting value for society.'},
+  {label:'Ketu (Past Life)', value:'Deep research, occult sciences, medicine, or mystical traditions. The soul has mastered these — this life calls for worldly engagement (7th house).'},
+  {label:'Jupiter Blessing', value:'Jupiter in 11th in Pisces bestows natural philosophical depth, generosity, and wisdom. Teaching, mentoring, and service amplify your karma positively.'},
+  {label:'Spiritual Practices', value:'Meditation (Moon in Virgo responds beautifully), Pranayama, Vishnu or Lakshmi devotion (Venus lord), Saturn contemplation on impermanence.'},
+  {label:'Sacred Timing', value:'2029–2030 (Mars-Jupiter) is the most spiritually receptive period in the 5-year window. Retreat, study, or pilgrimage during this antardasha carries exceptional benefit.'},
+  {label:'Soul Mission', value:'To build lasting, meaningful structures (Saturn 10th) that serve many (Jupiter 11th), through disciplined creative intelligence (Mercury-Sun-Rahu 3rd).'}
+];
+
+const ROUTINE = [
+  {time:'5:30–6:00 AM', act:'Wake & Pranayama', note:'Moon in Virgo benefits from morning breath work. Anulom Vilom (alternate nostril) is ideal.'},
+  {time:'6:00–7:00 AM', act:'Physical Activity', note:'Mars in Scorpio requires physical outlet daily. Yoga, gym, or walk — non-negotiable.'},
+  {time:'7:00–7:30 AM', act:'Mantra Japa', note:'Chant planetary mantras before the day begins. Saturn mantra on Saturdays especially.'},
+  {time:'7:30–9:00 AM', act:'Deep Work Block', note:'Mercury in 3rd house: your mind is sharpest in the morning. Reserve for complex cognitive tasks.'},
+  {time:'12:30–1:30 PM', act:'Lunch (Warm)', note:'Kapha-Vata prakriti benefits from warm, grounding meals. Avoid cold or raw foods.'},
+  {time:'9:00–10:00 PM', act:'Digital Sunset', note:'Rahu in 3rd creates screen addiction risk. Set hard boundaries on technology evening use.'},
+  {time:'10:00–10:30 PM', act:'Gratitude Journal', note:'Moon in Virgo processes the day through reflection. Writing grounds the analytical mind.'},
+  {time:'10:30 PM', act:'Sleep', note:'Saturn requires regular, disciplined sleep. 7–8 hours minimum for sustained career performance.'}
+];
+
+function buildHealthTimeline(){
+  const c=document.getElementById('health-timeline');
+  HEALTH_DATA.forEach((h,i)=>{
+    const entry=document.createElement('div');entry.className='health-entry';
+    const tips=h.tips.map(t=>`<span class="h-tip" style="background:${t.c};color:${t.tc};border-color:${t.tc}">${t.t}</span>`).join('');
+    entry.innerHTML=`<div class="health-node" style="border-color:${h.dotColor}"></div><div class="h-period">${h.period}</div><div class="h-card" style="border-left-color:${h.dotColor}"><div class="h-title" style="color:${h.color}">${h.title} <span style="font-family:'Space Mono',monospace;font-size:8.5px;padding:2px 7px;background:${h.accent};color:${h.color};margin-left:6px">${h.level}</span></div><div class="h-body">${h.body}</div><div class="h-tips">${tips}</div></div>`;
+    setTimeout(()=>entry.classList.add('visible'),300+i*120);
+    c.appendChild(entry);
+  });
+}
+
+function buildLifePhases(){
+  const g=document.getElementById('life-phases');
+  LIFE_PHASES.forEach(p=>{
+    const card=document.createElement('div');card.className=`lp-card ${p.cls}`;
+    card.innerHTML=`<div class="lp-age">${p.age}</div><div class="lp-theme">${p.theme}</div><div class="lp-body">${p.body}</div>`;
+    g.appendChild(card);
+  });
+}
+
+function buildRelGrid(){
+  const g=document.getElementById('rel-grid');
+  REL_DATA.forEach(r=>{
+    const card=document.createElement('div');card.className='rel-card';
+    card.style.borderTop=`2px solid ${r.gradColor}`;
+    card.innerHTML=`<span class="rel-icon">${r.icon}</span><div class="rel-title">${r.title}</div><div class="rel-body">${r.body}</div>`;
+    g.appendChild(card);
+  });
+}
+
+function buildSpiritual(){
+  const g=document.getElementById('sp-grid');
+  SPIRITUAL.forEach(s=>{
+    const item=document.createElement('div');item.className='sp-item';
+    item.innerHTML=`<div class="sp-label">${s.label}</div><div class="sp-value">${s.value}</div>`;
+    g.appendChild(item);
+  });
+}
+
+function buildRoutine(){
+  const g=document.getElementById('routine-grid');
+  ROUTINE.forEach(r=>{
+    const card=document.createElement('div');
+    card.style.cssText='background:var(--card-bg);padding:1.1rem 1.2rem;';
+    card.innerHTML=`<div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--gold);letter-spacing:.06em;margin-bottom:4px">${r.time}</div><div style="font-family:'Cinzel',serif;font-size:.82rem;color:var(--text-primary);margin-bottom:4px">${r.act}</div><div style="font-size:12px;color:var(--text-secondary);line-height:1.5">${r.note}</div>`;
+    g.appendChild(card);
+  });
+}
+
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+
+document.addEventListener('DOMContentLoaded',()=>{
+  buildHealthTimeline();buildLifePhases();buildRelGrid();buildSpiritual();buildRoutine();
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+});
+</script>
+</body>
+</html>

@@ -3,1337 +3,707 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vedic Astrology — Personal 5-Year Forecast</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<title>Cosmic Blueprint — Vedic Birth Chart</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #05050f;
-    --bg2: #080818;
-    --gold: #c9a84c;
-    --gold2: #e8c96b;
-    --gold3: #f5e29a;
-    --ruby: #8b1a2f;
-    --ruby2: #c0274a;
-    --sapphire: #1a2f6b;
-    --sapphire2: #2d4db8;
-    --emerald: #1a4f2a;
-    --emerald2: #2d8b4a;
-    --silver: #a8b4c8;
-    --silver2: #d0dae8;
-    --cream: #f0e8d5;
-    --text: #e8dfc8;
-    --muted: #8a8070;
-    --card-bg: rgba(12,10,28,0.85);
-    --border: rgba(201,168,76,0.25);
-    --glow: rgba(201,168,76,0.15);
-  }
+:root {
+  --cosmos:#03010a;--deep:#07030f;--void:#0d0820;--nebula:#150d2e;
+  --gold:#c9a84c;--gold-light:#e8c97a;--gold-dim:#7a6230;
+  --silver:#a8b8d0;--silver-light:#d4e0f0;
+  --crimson:#8b1a3a;--ruby:#c0234a;
+  --sapphire:#1a3a7a;--sapphire-light:#2a5abf;
+  --emerald:#1a6b3a;--emerald-light:#28a05a;
+  --amethyst:#6b2d8b;--amethyst-light:#9b4dbf;
+  --text-primary:#f0e8d8;--text-secondary:#a8a090;--text-dim:#6a6258;
+  --border:rgba(201,168,76,0.15);--border-bright:rgba(201,168,76,0.4);
+  --card-bg:rgba(21,13,46,0.7);--card-border:rgba(201,168,76,0.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cosmos);color:var(--text-primary);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(1px 1px at 10% 15%,rgba(255,255,255,.8) 0%,transparent 100%),radial-gradient(1px 1px at 30% 5%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 50% 25%,rgba(255,255,255,.9) 0%,transparent 100%),radial-gradient(1px 1px at 70% 10%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 90% 20%,rgba(255,255,255,.7) 0%,transparent 100%),radial-gradient(1px 1px at 20% 40%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 40% 55%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1px 1px at 60% 70%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 80% 45%,rgba(255,255,255,.7) 0%,transparent 100%),radial-gradient(1px 1px at 15% 75%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 85% 80%,rgba(255,255,255,.8) 0%,transparent 100%),radial-gradient(1px 1px at 55% 90%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(2px 2px at 45% 35%,rgba(201,168,76,.3) 0%,transparent 100%),radial-gradient(2px 2px at 25% 60%,rgba(168,184,208,.2) 0%,transparent 100%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 60% 40% at 20% 30%,rgba(107,45,139,.12) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 80% 70%,rgba(26,58,122,.15) 0%,transparent 60%),radial-gradient(ellipse 40% 30% at 50% 10%,rgba(139,26,58,.08) 0%,transparent 60%);pointer-events:none;z-index:0;animation:nebulaPulse 12s ease-in-out infinite alternate;}
+@keyframes nebulaPulse{0%{opacity:.7}50%{opacity:1}100%{opacity:.8}}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:60px;background:rgba(3,1,10,.9);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);}
+.nav-brand{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links li a{display:block;padding:8px 12px;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:var(--text-secondary);text-decoration:none;text-transform:uppercase;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s;cursor:pointer;}
+.nav-links li a:hover,.nav-links li a.active{color:var(--gold);border-bottom-color:var(--gold);}
+.nav-date{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:.05em;}
 
-  html { scroll-behavior: smooth; }
+.page{display:none;min-height:100vh;padding-top:60px;position:relative;z-index:1;}
+.page.active{display:block;}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'EB Garamond', serif;
-    font-size: 17px;
-    line-height: 1.75;
-    overflow-x: hidden;
-  }
+/* HERO */
+#page-hero{display:none;flex-direction:column;align-items:center;min-height:100vh;padding-top:60px;position:relative;z-index:1;}
+#page-hero.active{display:flex;}
+.hero-section{width:100%;min-height:calc(100vh - 60px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 2rem;text-align:center;position:relative;}
+.mandala-container{position:relative;width:300px;height:300px;margin:0 auto 2.5rem;}
+.mandala-ring{position:absolute;border-radius:50%;border:1px solid;top:50%;left:50%;transform:translate(-50%,-50%);animation:rotateSlow linear infinite;}
+.r1{width:55px;height:55px;border-color:rgba(201,168,76,.9);animation-duration:8s;}
+.r2{width:105px;height:105px;border-color:rgba(201,168,76,.6);animation-duration:20s;animation-direction:reverse;}
+.r3{width:165px;height:165px;border-color:rgba(201,168,76,.3);animation-duration:35s;border-style:dashed;}
+.r4{width:225px;height:225px;border-color:rgba(168,184,208,.18);animation-duration:50s;animation-direction:reverse;}
+.r5{width:292px;height:292px;border-color:rgba(201,168,76,.08);animation-duration:80s;}
+@keyframes rotateSlow{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.mandala-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;background:radial-gradient(circle,var(--gold) 0%,var(--gold-dim) 60%,transparent 100%);border-radius:50%;animation:pulse 3s ease-in-out infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(201,168,76,.6),0 0 60px rgba(201,168,76,.2)}50%{box-shadow:0 0 40px rgba(201,168,76,.9),0 0 100px rgba(201,168,76,.4)}}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(2rem,5vw,4.2rem);font-weight:700;color:var(--gold);letter-spacing:.06em;line-height:1.1;margin-bottom:.5rem;text-shadow:0 0 80px rgba(201,168,76,.4);}
+.hero-subtitle{font-family:'Cinzel',serif;font-size:clamp(.8rem,2vw,1.2rem);color:var(--silver);letter-spacing:.2em;margin-bottom:1.5rem;text-transform:uppercase;}
+.hero-details{font-family:'Space Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:.1em;margin-bottom:2.5rem;line-height:2.2;}
+.trinity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;max-width:600px;width:100%;margin:0 auto 2.5rem;background:var(--border);border:1px solid var(--border);}
+.trinity-card{background:var(--card-bg);padding:1.4rem 1rem;text-align:center;cursor:pointer;transition:background .3s;}
+.trinity-card:hover{background:rgba(201,168,76,.06);}
+.trinity-label{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.15em;color:var(--text-dim);text-transform:uppercase;margin-bottom:.4rem;}
+.trinity-value{font-family:'Cinzel',serif;font-size:1.15rem;color:var(--gold);font-weight:600;}
+.trinity-sub{font-size:11.5px;color:var(--text-secondary);margin-top:.3rem;font-style:italic;}
+.scroll-hint{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--text-dim);letter-spacing:.15em;text-transform:uppercase;animation:fadeUD 2s ease-in-out infinite;}
+@keyframes fadeUD{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:.8;transform:translateY(5px)}}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;padding:2.5rem 2rem 5rem;}
+.ov-card{background:var(--card-bg);border:1px solid var(--card-border);padding:1.8rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;cursor:pointer;}
+.ov-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s;}
+.ov-card:hover{border-color:var(--border-bright);transform:translateY(-3px);}
+.ov-card:hover::before{opacity:1;}
+.ov-icon{font-size:1.8rem;margin-bottom:.8rem;display:block;}
+.ov-title{font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold);margin-bottom:.5rem;letter-spacing:.05em;}
+.ov-body{font-size:13.5px;color:var(--text-secondary);line-height:1.6;}
 
-  /* ── Starfield ── */
-  #stars {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background: radial-gradient(ellipse at 50% 0%, #0d0825 0%, #05050f 70%);
-  }
-  .star {
-    position: absolute; border-radius: 50%;
-    background: white; animation: twinkle var(--d) ease-in-out infinite;
-  }
-  @keyframes twinkle {
-    0%,100% { opacity: var(--o1); transform: scale(1); }
-    50% { opacity: var(--o2); transform: scale(1.4); }
-  }
+/* SHARED */
+.page-header{padding:3.5rem 2rem 1.5rem;text-align:center;max-width:800px;margin:0 auto;}
+.page-title{font-family:'Cinzel',serif;font-size:clamp(1.7rem,4vw,2.8rem);color:var(--gold);letter-spacing:.08em;margin-bottom:.5rem;}
+.page-desc{font-size:14.5px;color:var(--text-secondary);font-style:italic;letter-spacing:.03em;}
+.divider{display:flex;align-items:center;gap:1rem;max-width:400px;margin:1.2rem auto;}
+.divider-line{flex:1;height:.5px;background:var(--border-bright);}
+.divider-gem{width:8px;height:8px;background:var(--gold);transform:rotate(45deg);}
+.section-header{margin-bottom:1.8rem;padding-top:.8rem;}
+.section-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;color:var(--text-dim);text-transform:uppercase;margin-bottom:.4rem;}
+.section-h2{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--text-primary);letter-spacing:.06em;}
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
 
-  /* ── Layout ── */
-  .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+/* CHART PAGE */
+.chart-layout{display:flex;flex-wrap:wrap;gap:2.5rem;max-width:1100px;margin:0 auto;padding:1.5rem 2rem;align-items:flex-start;justify-content:center;}
+.planet-panel{flex:1;min-width:280px;max-width:520px;}
+.planet-list{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);}
+.planet-row{background:var(--card-bg);display:grid;grid-template-columns:42px 1fr auto;align-items:center;gap:.8rem;padding:.85rem 1.1rem;cursor:pointer;transition:background .2s;border-left:3px solid transparent;}
+.planet-row:hover{background:rgba(201,168,76,.05);}
+.planet-row.active{background:rgba(201,168,76,.08);border-left-color:var(--gold);}
+.planet-symbol{font-size:1.4rem;text-align:center;}
+.planet-name{font-family:'Cinzel',serif;font-size:.82rem;color:var(--text-primary);}
+.planet-placement{font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);margin-top:2px;}
+.planet-badge{font-family:'Space Mono',monospace;font-size:8.5px;padding:3px 8px;text-transform:uppercase;letter-spacing:.05em;}
+.b-strong{background:rgba(40,160,90,.15);color:var(--emerald-light);border:1px solid rgba(40,160,90,.3);}
+.b-own{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3);}
+.b-neutral{background:rgba(168,184,208,.1);color:var(--silver);border:1px solid rgba(168,184,208,.2);}
+.b-kendra{background:rgba(26,58,122,.2);color:#6a9be8;border:1px solid rgba(42,90,191,.3);}
+.planet-detail{margin-top:1.2rem;background:var(--card-bg);border:1px solid var(--border-bright);padding:1.4rem;display:none;animation:fadeIn .3s ease;}
+.planet-detail.visible{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.pd-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold);margin-bottom:.7rem;}
+.pd-body{font-size:13.5px;color:var(--text-secondary);line-height:1.7;}
+.yoga-section{max-width:1100px;margin:0 auto;padding:1rem 2rem 4rem;}
+.yoga-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;margin-top:1.2rem;}
+.yoga-card{background:var(--card-bg);border:1px solid var(--card-border);padding:1.4rem;position:relative;overflow:hidden;}
+.yoga-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);}
+.yoga-name{font-family:'Cinzel',serif;font-size:.9rem;color:var(--gold);margin-bottom:.4rem;}
+.yoga-desc{font-size:13px;color:var(--text-secondary);line-height:1.6;}
+.yoga-strength{display:flex;align-items:center;gap:.5rem;margin-top:.8rem;}
+.yoga-bar-track{flex:1;height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;}
+.yoga-bar-fill{height:100%;background:var(--gold);border-radius:2px;width:0;transition:width 1.2s ease;}
 
-  /* ── Hero ── */
-  #hero {
-    min-height: 100vh; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; text-align: center;
-    padding: 4rem 2rem; position: relative;
-  }
-  .mandala {
-    position: absolute; width: 700px; height: 700px;
-    top: 50%; left: 50%; transform: translate(-50%,-50%);
-    opacity: 0.07; animation: spin 120s linear infinite;
-  }
-  @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+/* DASHA PAGE */
+.dasha-page{max-width:1000px;margin:0 auto;padding:0 2rem 5rem;}
+.timeline-spine{position:absolute;left:118px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold-dim),var(--gold),var(--gold-dim),transparent);}
+.dasha-entry{display:flex;align-items:flex-start;gap:0;margin-bottom:0;position:relative;cursor:pointer;}
+.dasha-period-label{width:108px;flex-shrink:0;text-align:right;padding-right:18px;font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);letter-spacing:.05em;padding-top:17px;}
+.dasha-node{width:20px;flex-shrink:0;display:flex;justify-content:center;padding-top:14px;position:relative;z-index:2;}
+.dasha-dot{width:10px;height:10px;border-radius:50%;border:2px solid;background:var(--cosmos);transition:all .3s;}
+.dasha-entry:hover .dasha-dot,.dasha-entry.active .dasha-dot{box-shadow:0 0 12px currentColor;transform:scale(1.4);}
+.dasha-content{flex:1;padding:11px 14px 18px 18px;border-left:.5px solid transparent;transition:border-color .3s;}
+.dasha-entry.active .dasha-content{border-left-color:var(--border-bright);}
+.dasha-title{font-family:'Cinzel',serif;font-size:.95rem;margin-bottom:.3rem;transition:color .3s;}
+.dasha-years{font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);margin-bottom:.5rem;letter-spacing:.06em;}
+.dasha-body{font-size:13px;color:var(--text-secondary);line-height:1.6;max-height:0;overflow:hidden;transition:max-height .5s ease;}
+.dasha-entry.active .dasha-body{max-height:300px;}
+.antardasha-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:8px;margin-top:1.8rem;}
+.ad-card{background:var(--card-bg);border:1px solid var(--border);padding:.75rem .9rem;cursor:pointer;transition:border-color .2s,background .2s;}
+.ad-card:hover{border-color:var(--border-bright);background:rgba(201,168,76,.05);}
+.ad-card.highlight{border-color:var(--gold);}
+.ad-planet{font-family:'Cinzel',serif;font-size:.82rem;color:var(--gold);margin-bottom:2px;}
+.ad-period{font-family:'Space Mono',monospace;font-size:7.5px;color:var(--text-dim);}
+.ad-note{font-size:10.5px;color:var(--text-secondary);margin-top:3px;line-height:1.4;}
+.now-band{background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.25);border-left:4px solid var(--gold);padding:1.2rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;gap:1.5rem;}
+.now-pulse{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(201,168,76,.4);animation:nowPulse 2s infinite;flex-shrink:0;}
+@keyframes nowPulse{0%{box-shadow:0 0 0 0 rgba(201,168,76,.4)}70%{box-shadow:0 0 0 10px rgba(201,168,76,0)}100%{box-shadow:0 0 0 0 rgba(201,168,76,0)}}
+.now-text{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--gold);margin-bottom:2px;}
+.now-detail{font-size:13px;color:var(--text-secondary);}
 
-  .hero-badge {
-    font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.35em;
-    color: var(--gold); text-transform: uppercase;
-    border: 1px solid var(--border); padding: 0.4rem 1.4rem;
-    border-radius: 50px; margin-bottom: 2rem;
-    animation: fadeUp 1s ease both;
-  }
-  .hero-title {
-    font-family: 'Cinzel Decorative', serif; font-size: clamp(2.2rem, 5vw, 4.5rem);
-    font-weight: 900; line-height: 1.1;
-    background: linear-gradient(135deg, var(--gold3) 0%, var(--gold) 50%, #a07830 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    animation: fadeUp 1s ease 0.2s both;
-  }
-  .hero-sub {
-    font-family: 'Cinzel', serif; font-size: clamp(0.9rem, 2vw, 1.15rem);
-    color: var(--silver); letter-spacing: 0.15em; margin-top: 1rem;
-    animation: fadeUp 1s ease 0.4s both;
-  }
-  .hero-details {
-    display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
-    margin-top: 2.5rem; animation: fadeUp 1s ease 0.6s both;
-  }
-  .hero-pill {
-    background: rgba(201,168,76,0.08); border: 1px solid var(--border);
-    padding: 0.5rem 1.2rem; border-radius: 6px;
-    font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--gold2);
-    letter-spacing: 0.1em;
-  }
-  .hero-divider {
-    width: 120px; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 2.5rem auto 0; animation: fadeUp 1s ease 0.8s both;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(22px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+/* CAREER PAGE */
+.forecast-page{max-width:1100px;margin:0 auto;padding:0 2rem 5rem;}
+.year-timeline{position:relative;padding-left:78px;}
+.year-timeline::before{content:'';position:absolute;left:38px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold-dim) 10%,var(--gold-dim) 90%,transparent);}
+.year-block{position:relative;margin-bottom:2.5rem;opacity:0;transform:translateX(-20px);transition:opacity .6s ease,transform .6s ease;}
+.year-block.revealed{opacity:1;transform:translateX(0);}
+.year-badge{position:absolute;left:-78px;top:0;width:62px;text-align:center;}
+.year-num{font-family:'Cinzel',serif;font-size:1.3rem;color:var(--gold-dim);line-height:1;transition:color .3s;}
+.year-block:hover .year-num{color:var(--gold);}
+.year-node{position:absolute;left:-44px;top:7px;width:11px;height:11px;border-radius:50%;border:2px solid var(--gold-dim);background:var(--cosmos);transition:border-color .3s,box-shadow .3s;}
+.year-block:hover .year-node{border-color:var(--gold);box-shadow:0 0 10px rgba(201,168,76,.5);}
+.year-card{background:var(--card-bg);border:1px solid var(--card-border);padding:1.7rem;transition:border-color .3s;}
+.year-block:hover .year-card{border-color:var(--border-bright);}
+.year-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.9rem;flex-wrap:wrap;}
+.year-title{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--gold);}
+.year-dasha{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-dim);margin-top:3px;letter-spacing:.05em;}
+.intensity-meter{display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+.intensity-label{font-family:'Space Mono',monospace;font-size:7.5px;color:var(--text-dim);letter-spacing:.08em;text-transform:uppercase;}
+.intensity-dots{display:flex;gap:3px;}
+.i-dot{width:7px;height:7px;border-radius:50%;background:var(--border-bright);}
+.i-dot.lit{background:var(--gold);box-shadow:0 0 4px var(--gold);}
+.year-body{font-size:13.5px;color:var(--text-secondary);line-height:1.75;margin-bottom:.9rem;}
+.career-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.ctag{font-family:'Space Mono',monospace;font-size:8.5px;padding:3px 9px;border:1px solid;letter-spacing:.06em;text-transform:uppercase;}
+.ctag-gold{color:var(--gold-light);border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.07);}
+.ctag-blue{color:#6a9be8;border-color:rgba(42,90,191,.3);background:rgba(26,58,122,.15);}
+.ctag-green{color:var(--emerald-light);border-color:rgba(40,160,90,.3);background:rgba(26,107,58,.15);}
+.ctag-red{color:#e05070;border-color:rgba(192,35,74,.3);background:rgba(139,26,58,.15);}
+.ctag-purple{color:#b07de8;border-color:rgba(107,45,139,.3);background:rgba(107,45,139,.12);}
+.direction-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:1rem;margin-top:1.8rem;}
+.direction-card{background:var(--card-bg);border:1px solid var(--border);padding:1.2rem;text-align:center;cursor:pointer;transition:border-color .3s,transform .3s;}
+.direction-card:hover{border-color:var(--border-bright);transform:translateY(-4px);}
+.direction-icon{font-size:1.9rem;margin-bottom:.6rem;display:block;}
+.direction-title{font-family:'Cinzel',serif;font-size:.78rem;color:var(--gold);margin-bottom:.3rem;}
+.direction-fit{font-size:11px;color:var(--text-secondary);line-height:1.4;}
 
-  /* ── Nav ── */
-  #nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(5,5,15,0.92); backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner {
-    max-width: 1100px; margin: 0 auto; padding: 0 2rem;
-    display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
-  }
-  .nav-inner::-webkit-scrollbar { display: none; }
-  .nav-link {
-    font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.12em;
-    color: var(--muted); text-decoration: none; padding: 1rem 1.1rem;
-    white-space: nowrap; border-bottom: 2px solid transparent;
-    transition: all 0.3s; text-transform: uppercase;
-  }
-  .nav-link:hover, .nav-link.active {
-    color: var(--gold); border-bottom-color: var(--gold);
-  }
+/* WEALTH PAGE */
+.wealth-page{max-width:1100px;margin:0 auto;padding:0 2rem 5rem;}
+.wealth-yoga-banner{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.02));border:1px solid rgba(201,168,76,.35);border-left:4px solid var(--gold);padding:1.4rem 1.8rem;margin-bottom:2rem;}
+.wyb-title{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--gold);margin-bottom:.5rem;}
+.wyb-body{font-size:13.5px;color:var(--text-secondary);line-height:1.7;}
+.wealth-chart-wrap{background:var(--card-bg);border:1px solid var(--border);padding:1.5rem;margin-bottom:2rem;}
+.chart-title{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.4rem;}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:160px;}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;justify-content:flex-end;}
+.bar-fill{width:100%;border-radius:1px 1px 0 0;min-height:4px;height:0;position:relative;overflow:hidden;}
+.bar-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,transparent 60%,rgba(255,255,255,.15));}
+.bar-label{font-family:'Space Mono',monospace;font-size:8px;color:var(--text-dim);text-align:center;white-space:nowrap;}
+.bar-value{font-family:'Cinzel',serif;font-size:10px;color:var(--gold);}
+.phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2rem;}
+.phase-card{background:var(--card-bg);padding:1.3rem;cursor:pointer;transition:background .2s;border-top:2px solid transparent;}
+.phase-card:hover{background:rgba(201,168,76,.04);}
+.p-peak{border-top-color:var(--gold);}
+.p-strong{border-top-color:var(--emerald-light);}
+.p-building{border-top-color:var(--sapphire-light);}
+.p-caution{border-top-color:var(--ruby);}
+.phase-period{font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);letter-spacing:.06em;margin-bottom:5px;}
+.phase-name{font-family:'Cinzel',serif;font-size:.87rem;color:var(--text-primary);margin-bottom:5px;}
+.phase-body{font-size:12px;color:var(--text-secondary);line-height:1.55;}
+.invest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1.5rem;}
+.invest-card{background:var(--card-bg);border:1px solid var(--border);padding:1.4rem;}
+.invest-icon{font-size:1.5rem;margin-bottom:.5rem;}
+.invest-title{font-family:'Cinzel',serif;font-size:.83rem;color:var(--gold);margin-bottom:.4rem;}
+.invest-body{font-size:12.5px;color:var(--text-secondary);line-height:1.6;}
 
-  /* ── Section ── */
-  section { padding: 5rem 0; }
-  .section-header { text-align: center; margin-bottom: 3.5rem; }
-  .section-eyebrow {
-    font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.4em;
-    color: var(--gold); text-transform: uppercase; margin-bottom: 0.8rem;
-  }
-  .section-title {
-    font-family: 'Cinzel Decorative', serif; font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-    color: var(--cream); font-weight: 700;
-  }
-  .section-rule {
-    width: 80px; height: 1px; margin: 1.2rem auto 0;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
+/* REMEDIES PAGE */
+.remedies-page{max-width:1000px;margin:0 auto;padding:0 2rem 5rem;}
+.gem-showcase{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:2rem;margin-bottom:3rem;}
+.gem-card{background:var(--card-bg);border:1px solid var(--border);padding:2rem;text-align:center;position:relative;overflow:hidden;cursor:pointer;transition:border-color .3s,transform .3s;}
+.gem-card:hover{transform:translateY(-4px);}
+.gem-card-sapphire{border-top:3px solid var(--sapphire-light);}
+.gem-card-sapphire:hover{border-color:var(--sapphire-light);}
+.gem-card-yellow{border-top:3px solid var(--gold);}
+.gem-card-yellow:hover{border-color:var(--gold);}
+.gem-orb{width:85px;height:85px;border-radius:50%;margin:0 auto 1.4rem;display:flex;align-items:center;justify-content:center;font-size:2.3rem;}
+.orb-sapphire{background:radial-gradient(circle at 35% 35%,#4a7fe0,#1a3a7a,#0a1a3a);animation:gemS 4s ease-in-out infinite;}
+.orb-yellow{background:radial-gradient(circle at 35% 35%,#f0d060,#c9a84c,#7a6230);animation:gemG 4s ease-in-out infinite;}
+@keyframes gemS{0%,100%{box-shadow:0 0 30px rgba(42,90,191,.6),0 0 60px rgba(42,90,191,.3)}50%{box-shadow:0 0 50px rgba(42,90,191,.9),0 0 100px rgba(42,90,191,.5)}}
+@keyframes gemG{0%,100%{box-shadow:0 0 30px rgba(201,168,76,.6),0 0 60px rgba(201,168,76,.3)}50%{box-shadow:0 0 50px rgba(201,168,76,.9),0 0 100px rgba(201,168,76,.5)}}
+.gem-name{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--gold);margin-bottom:.3rem;}
+.gem-planet{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.7rem;}
+.gem-specs{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:1rem 0;text-align:left;}
+.gsl{font-family:'Space Mono',monospace;font-size:7.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;}
+.gsv{font-size:12.5px;color:var(--text-secondary);margin-top:2px;}
+.gem-body{font-size:12.5px;color:var(--text-secondary);line-height:1.6;margin-top:.7rem;}
+.mantra-card{background:var(--card-bg);border:1px solid var(--border);padding:1.7rem;margin-bottom:.9rem;position:relative;cursor:pointer;transition:border-color .3s;}
+.mantra-card:hover{border-color:var(--border-bright);}
+.mantra-text{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--gold);letter-spacing:.08em;margin-bottom:.5rem;}
+.mantra-transliteration{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-dim);letter-spacing:.1em;margin-bottom:.7rem;}
+.mantra-meaning{font-size:13px;color:var(--text-secondary);line-height:1.6;}
+.mantra-count{position:absolute;top:1.2rem;right:1.5rem;font-family:'Cinzel',serif;font-size:2rem;color:rgba(201,168,76,.1);line-height:1;}
+.remedy-list{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2rem;}
+.remedy-item{background:var(--card-bg);display:grid;grid-template-columns:58px 1fr auto;align-items:center;gap:.9rem;padding:.9rem 1.2rem;}
+.r-day{font-family:'Cinzel',serif;font-size:.72rem;color:var(--gold);text-align:center;line-height:1.3;}
+.r-action{font-size:13px;color:var(--text-primary);}
+.r-why{font-size:11.5px;color:var(--text-secondary);margin-top:2px;}
+.r-tick{width:20px;height:20px;border-radius:50%;border:1px solid var(--border-bright);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;font-size:10px;color:transparent;flex-shrink:0;}
+.r-tick.done{background:var(--emerald-light);border-color:var(--emerald-light);color:white;}
+.card-info{background:var(--card-bg);border:1px solid var(--card-border);padding:1.5rem 1.8rem;margin-bottom:1rem;}
+.card-title{font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold);margin-bottom:.5rem;}
+.card-body{font-size:13.5px;color:var(--text-secondary);line-height:1.7;}
 
-  /* ── Cards ── */
-  .card {
-    background: var(--card-bg); border: 1px solid var(--border);
-    border-radius: 12px; padding: 2rem;
-    box-shadow: 0 4px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(201,168,76,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 60px rgba(0,0,0,0.6), 0 0 30px var(--glow),
-                inset 0 1px 0 rgba(201,168,76,0.15);
-  }
-  .card-title {
-    font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold2);
-    letter-spacing: 0.1em; margin-bottom: 1rem;
-    display: flex; align-items: center; gap: 0.6rem;
-  }
-  .card-title .icon { font-size: 1.2rem; }
-
-  /* ── Birth Chart Grid ── */
-  .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
-
-  .planet-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
-  .planet-table th {
-    font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em;
-    color: var(--gold); text-transform: uppercase; padding: 0.5rem 0.8rem;
-    border-bottom: 1px solid var(--border); text-align: left;
-  }
-  .planet-table td {
-    padding: 0.6rem 0.8rem; font-size: 0.92rem; color: var(--text);
-    border-bottom: 1px solid rgba(201,168,76,0.08);
-  }
-  .planet-table tr:last-child td { border-bottom: none; }
-  .planet-table tr:hover td { background: rgba(201,168,76,0.04); }
-  .planet-name { color: var(--gold2); font-weight: 600; }
-  .good { color: #6fbf8a; }
-  .bad { color: #e07070; }
-  .neutral { color: var(--silver); }
-
-  /* ── Rashi Chart Visual ── */
-  .rashi-wrap { display: flex; justify-content: center; margin: 2rem 0; }
-  .rashi-chart {
-    display: grid; grid-template-columns: repeat(4,1fr);
-    width: min(420px, 100%); aspect-ratio: 1;
-    border: 2px solid var(--border);
-    background: rgba(12,10,28,0.9);
-  }
-  .rashi-cell {
-    border: 1px solid rgba(201,168,76,0.2); padding: 0.4rem;
-    font-size: 0.62rem; font-family: 'Cinzel', serif;
-    color: var(--silver); display: flex; flex-direction: column;
-    align-items: center; justify-content: center; text-align: center;
-    min-height: 70px; position: relative;
-  }
-  .rashi-cell.lagna { background: rgba(201,168,76,0.12); }
-  .rashi-cell.empty { background: rgba(5,5,15,0.5); }
-  .rashi-num { font-size: 0.6rem; color: var(--muted); }
-  .rashi-sign { color: var(--gold2); font-size: 0.68rem; }
-  .rashi-planets { color: var(--gold3); font-size: 0.7rem; font-weight: 600; }
-  .rashi-center { grid-column: 2/4; grid-row: 2/4; display: flex;
-    align-items: center; justify-content: center; flex-direction: column;
-    border: 1px solid rgba(201,168,76,0.2); background: rgba(8,8,24,0.95); }
-  .rashi-center-text {
-    font-family: 'Cinzel Decorative', serif; font-size: 0.75rem;
-    color: var(--gold); text-align: center; line-height: 1.6;
-  }
-
-  /* ── Dasha Timeline ── */
-  .dasha-timeline { position: relative; padding-left: 2rem; }
-  .dasha-timeline::before {
-    content: ''; position: absolute; left: 0.4rem; top: 0; bottom: 0;
-    width: 1px; background: linear-gradient(180deg, var(--gold), transparent);
-  }
-  .dasha-item { position: relative; margin-bottom: 1.5rem; }
-  .dasha-item::before {
-    content: ''; position: absolute; left: -1.7rem; top: 0.45rem;
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--gold); box-shadow: 0 0 8px var(--gold);
-  }
-  .dasha-item.current::before { background: var(--ruby2); box-shadow: 0 0 12px var(--ruby2); }
-  .dasha-item.future::before { background: var(--muted); box-shadow: none; }
-  .dasha-period {
-    font-family: 'Cinzel', serif; font-size: 0.72rem; color: var(--gold);
-    letter-spacing: 0.1em; margin-bottom: 0.2rem;
-  }
-  .dasha-lord { font-size: 1rem; color: var(--cream); }
-  .dasha-note { font-size: 0.88rem; color: var(--muted); font-style: italic; }
-  .current-badge {
-    display: inline-block; background: var(--ruby2); color: white;
-    font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.15em;
-    padding: 0.15rem 0.6rem; border-radius: 50px; margin-left: 0.6rem; vertical-align: middle;
-  }
-
-  /* ── Year Forecast ── */
-  .year-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
-  .year-tab {
-    font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.1em;
-    padding: 0.55rem 1.2rem; border-radius: 6px; cursor: pointer;
-    background: transparent; border: 1px solid var(--border); color: var(--muted);
-    transition: all 0.3s;
-  }
-  .year-tab:hover { border-color: var(--gold); color: var(--gold); }
-  .year-tab.active {
-    background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
-    border-color: var(--gold); color: var(--gold2);
-    box-shadow: 0 0 20px rgba(201,168,76,0.1);
-  }
-  .year-content { display: none; animation: fadeIn 0.4s ease; }
-  .year-content.active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-  .year-header {
-    display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem;
-    padding-bottom: 1rem; border-bottom: 1px solid var(--border);
-  }
-  .year-num {
-    font-family: 'Cinzel Decorative', serif; font-size: 3rem; color: var(--gold);
-    line-height: 1; opacity: 0.7;
-  }
-  .year-title {
-    font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--cream);
-  }
-  .year-dasha { font-size: 0.82rem; color: var(--muted); font-style: italic; }
-
-  .forecast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem; }
-  @media (max-width: 620px) { .forecast-grid { grid-template-columns: 1fr; } }
-
-  .forecast-block {
-    background: rgba(8,8,24,0.7); border: 1px solid var(--border);
-    border-radius: 8px; padding: 1.2rem;
-  }
-  .forecast-block-title {
-    font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem;
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .forecast-block p { font-size: 0.93rem; color: var(--text); }
-
-  .timing-row {
-    display: flex; gap: 0.8rem; align-items: flex-start;
-    padding: 0.7rem 0; border-bottom: 1px solid rgba(201,168,76,0.06);
-    font-size: 0.9rem;
-  }
-  .timing-row:last-child { border-bottom: none; }
-  .timing-month {
-    font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.1em;
-    color: var(--gold); min-width: 70px; padding-top: 0.15rem;
-  }
-  .timing-event { color: var(--text); }
-
-  .meter-wrap { margin: 0.5rem 0; }
-  .meter-label { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.3rem; }
-  .meter-label span:first-child { color: var(--silver); font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.1em; }
-  .meter-label span:last-child { color: var(--gold); }
-  .meter-bar { height: 4px; background: rgba(201,168,76,0.12); border-radius: 2px; overflow: hidden; }
-  .meter-fill { height: 100%; border-radius: 2px; transition: width 1s ease; }
-  .fill-gold { background: linear-gradient(90deg, var(--gold), var(--gold3)); }
-  .fill-ruby { background: linear-gradient(90deg, var(--ruby), var(--ruby2)); }
-  .fill-emerald { background: linear-gradient(90deg, var(--emerald), var(--emerald2)); }
-  .fill-sapphire { background: linear-gradient(90deg, var(--sapphire), var(--sapphire2)); }
-
-  /* ── Gemstones ── */
-  .gem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
-  .gem-card {
-    border-radius: 12px; padding: 1.8rem 1.5rem; text-align: center;
-    border: 1px solid; position: relative; overflow: hidden;
-  }
-  .gem-card::before {
-    content: ''; position: absolute; inset: 0; opacity: 0.08;
-    background: radial-gradient(circle at 50% 20%, white, transparent 70%);
-  }
-  .gem-ruby { border-color: rgba(192,39,74,0.4); background: rgba(139,26,47,0.15); }
-  .gem-sapphire { border-color: rgba(45,77,184,0.4); background: rgba(26,47,107,0.15); }
-  .gem-emerald { border-color: rgba(45,139,74,0.4); background: rgba(26,79,42,0.15); }
-  .gem-pearl { border-color: rgba(200,190,220,0.4); background: rgba(150,140,180,0.1); }
-  .gem-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
-  .gem-name { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--cream); margin-bottom: 0.3rem; }
-  .gem-planet { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-bottom: 0.8rem; }
-  .gem-desc { font-size: 0.88rem; color: var(--text); line-height: 1.6; }
-  .gem-weight { font-family: 'Cinzel', serif; font-size: 0.68rem; color: var(--gold);
-    letter-spacing: 0.15em; margin-top: 0.8rem; }
-
-  /* ── Remedies ── */
-  .remedy-list { display: flex; flex-direction: column; gap: 0.8rem; }
-  .remedy-item {
-    display: flex; gap: 1rem; align-items: flex-start;
-    background: rgba(8,8,24,0.7); border-left: 3px solid var(--gold);
-    padding: 1rem 1.2rem; border-radius: 0 8px 8px 0;
-  }
-  .remedy-num {
-    font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold);
-    opacity: 0.4; line-height: 1; min-width: 2rem;
-  }
-  .remedy-text { font-size: 0.93rem; color: var(--text); }
-  .remedy-text strong { color: var(--gold2); font-family: 'Cinzel', serif; font-weight: 600; }
-
-  /* ── Mantra ── */
-  .mantra-box {
-    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(8,8,24,0.9));
-    border: 1px solid var(--border); border-radius: 12px;
-    padding: 2rem; text-align: center; margin: 1.2rem 0;
-  }
-  .mantra-devanagari {
-    font-size: clamp(1.1rem, 3vw, 1.5rem); color: var(--gold2);
-    letter-spacing: 0.05em; line-height: 1.8; margin-bottom: 0.5rem;
-  }
-  .mantra-transliteration { font-style: italic; color: var(--silver); font-size: 0.92rem; margin-bottom: 0.5rem; }
-  .mantra-meaning { font-size: 0.88rem; color: var(--muted); }
-
-  /* ── Health / Relationship pillars ── */
-  .pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  @media (max-width: 620px) { .pillar-grid { grid-template-columns: 1fr; } }
-
-  /* ── Footer ── */
-  footer {
-    border-top: 1px solid var(--border); padding: 2.5rem 2rem;
-    text-align: center; color: var(--muted); font-size: 0.82rem;
-  }
-  footer .footer-title {
-    font-family: 'Cinzel Decorative', serif; font-size: 1rem;
-    color: var(--gold); margin-bottom: 0.5rem;
-  }
-
-  /* ── Utilities ── */
-  .highlight { color: var(--gold2); }
-  .em { font-style: italic; color: var(--silver); }
-  .tag {
-    display: inline-block; font-family: 'Cinzel', serif; font-size: 0.62rem;
-    letter-spacing: 0.12em; padding: 0.2rem 0.7rem; border-radius: 50px;
-    border: 1px solid; margin-right: 0.4rem; margin-bottom: 0.3rem;
-  }
-  .tag-career { border-color: rgba(201,168,76,0.5); color: var(--gold); }
-  .tag-wealth { border-color: rgba(107,191,138,0.5); color: #6fbf8a; }
-  .tag-caution { border-color: rgba(224,112,112,0.5); color: #e07070; }
-  .tag-spiritual { border-color: rgba(160,120,220,0.5); color: #c090f0; }
-
-  .divider {
-    width: 100%; height: 1px; margin: 3rem 0;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
-  }
-
-  /* ── Scroll reveal ── */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+/* BOTTOM NAV */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:999;display:flex;justify-content:center;padding:.7rem;background:rgba(3,1,10,.92);backdrop-filter:blur(8px);border-top:.5px solid var(--border);gap:3px;}
+.bnav-btn{padding:5px 14px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;border:1px solid transparent;background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s;}
+.bnav-btn:hover{color:var(--text-secondary);border-color:var(--border);}
+.bnav-btn.active{color:var(--gold);border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.06);}
+@media(max-width:640px){nav{padding:0 1rem;}.nav-links{display:none;}.chart-layout{padding:1rem;}.year-timeline{padding-left:55px;}.year-timeline::before{left:25px;}.year-badge{left:-55px;width:48px;}.year-num{font-size:1rem;}}
 </style>
 </head>
 <body>
-
-<!-- Starfield -->
-<div id="stars"></div>
-
-<!-- Hero -->
-<section id="hero">
-  <svg class="mandala" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="250" cy="250" r="240" stroke="#c9a84c" stroke-width="0.5"/>
-    <circle cx="250" cy="250" r="200" stroke="#c9a84c" stroke-width="0.3"/>
-    <circle cx="250" cy="250" r="160" stroke="#c9a84c" stroke-width="0.5"/>
-    <circle cx="250" cy="250" r="120" stroke="#c9a84c" stroke-width="0.3"/>
-    <circle cx="250" cy="250" r="80" stroke="#c9a84c" stroke-width="0.5"/>
-    <circle cx="250" cy="250" r="40" stroke="#c9a84c" stroke-width="0.3"/>
-    <!-- 12 lines like clock -->
-    <line x1="250" y1="10" x2="250" y2="490" stroke="#c9a84c" stroke-width="0.3"/>
-    <line x1="10" y1="250" x2="490" y2="250" stroke="#c9a84c" stroke-width="0.3"/>
-    <line x1="83" y1="83" x2="417" y2="417" stroke="#c9a84c" stroke-width="0.3"/>
-    <line x1="417" y1="83" x2="83" y2="417" stroke="#c9a84c" stroke-width="0.3"/>
-    <line x1="37" y1="155" x2="463" y2="345" stroke="#c9a84c" stroke-width="0.2"/>
-    <line x1="155" y1="37" x2="345" y2="463" stroke="#c9a84c" stroke-width="0.2"/>
-    <line x1="463" y1="155" x2="37" y2="345" stroke="#c9a84c" stroke-width="0.2"/>
-    <line x1="345" y1="37" x2="155" y2="463" stroke="#c9a84c" stroke-width="0.2"/>
-    <!-- petals -->
-    <ellipse cx="250" cy="130" rx="18" ry="40" fill="#c9a84c" opacity="0.15"/>
-    <ellipse cx="250" cy="370" rx="18" ry="40" fill="#c9a84c" opacity="0.15"/>
-    <ellipse cx="130" cy="250" rx="40" ry="18" fill="#c9a84c" opacity="0.15"/>
-    <ellipse cx="370" cy="250" rx="40" ry="18" fill="#c9a84c" opacity="0.15"/>
-    <ellipse cx="162" cy="162" rx="18" ry="40" fill="#c9a84c" opacity="0.1" transform="rotate(-45 162 162)"/>
-    <ellipse cx="338" cy="162" rx="18" ry="40" fill="#c9a84c" opacity="0.1" transform="rotate(45 338 162)"/>
-    <ellipse cx="162" cy="338" rx="18" ry="40" fill="#c9a84c" opacity="0.1" transform="rotate(45 162 338)"/>
-    <ellipse cx="338" cy="338" rx="18" ry="40" fill="#c9a84c" opacity="0.1" transform="rotate(-45 338 338)"/>
-  </svg>
-
-  <div class="hero-badge">Jyotish Shastra · Vedic Astrology</div>
-  <h1 class="hero-title">Personal Cosmic<br>Blueprint</h1>
-  <p class="hero-sub">Five-Year Career & Wealth Forecast · 2025–2030</p>
-  <div class="hero-details">
-    <div class="hero-pill">☉ 18 July 2006</div>
-    <div class="hero-pill">☽ 3:10 AM · Kathmandu</div>
-    <div class="hero-pill">↑ Taurus Ascendant</div>
-    <div class="hero-pill">◎ Jupiter Mahadasha</div>
-  </div>
-  <div class="hero-divider"></div>
-</section>
-
-<!-- Nav -->
-<nav id="nav">
-  <div class="nav-inner">
-    <a class="nav-link" href="#birth-chart">Birth Chart</a>
-    <a class="nav-link" href="#dasha">Dasha</a>
-    <a class="nav-link" href="#career">Career</a>
-    <a class="nav-link" href="#wealth">Wealth</a>
-    <a class="nav-link" href="#yearly">Year-by-Year</a>
-    <a class="nav-link" href="#health">Health & Life</a>
-    <a class="nav-link" href="#remedies">Remedies</a>
-  </div>
+<nav>
+  <div class="nav-brand">Cosmic Blueprint</div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="return showPage('page-hero')" class="active" id="nav-hero">Overview</a></li>
+    <li><a href="#" onclick="return showPage('page-chart')" id="nav-chart">Birth Chart</a></li>
+    <li><a href="#" onclick="return showPage('page-dasha')" id="nav-dasha">Dasha</a></li>
+    <li><a href="#" onclick="return showPage('page-career')" id="nav-career">Career</a></li>
+    <li><a href="#" onclick="return showPage('page-wealth')" id="nav-wealth">Wealth</a></li>
+    <li><a href="#" onclick="return showPage('page-remedies')" id="nav-remedies">Remedies</a></li>
+    <li><a href="health.html" id="nav-health">Health &amp; Life</a></li>
+    <li><a href="summary.html" id="nav-summary">Summary</a></li>
+  </ul>
+  <div class="nav-date">18·07·2006 · 03:10 · KTM</div>
 </nav>
 
-<!-- ══════════════ BIRTH CHART ══════════════ -->
-<section id="birth-chart">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Foundation</div>
-      <h2 class="section-title">Birth Chart Analysis</h2>
-      <div class="section-rule"></div>
+<!-- PAGE 1: HERO -->
+<div id="page-hero" class="page active">
+  <div class="hero-section">
+    <div class="mandala-container">
+      <div class="mandala-ring r5"></div>
+      <div class="mandala-ring r4"></div>
+      <div class="mandala-ring r3"></div>
+      <div class="mandala-ring r2"></div>
+      <div class="mandala-ring r1"></div>
+      <div class="mandala-center"></div>
+      <div id="orbit-dots"></div>
     </div>
-
-    <!-- Rashi Chart -->
-    <div class="card reveal" style="margin-bottom:2rem">
-      <div class="card-title"><span class="icon">♈</span> North Indian Rashi Chart (D-1)</div>
-      <div class="rashi-wrap">
-        <div class="rashi-chart">
-          <!-- Row 1: Houses 12,1,2,3 -->
-          <div class="rashi-cell">
-            <div class="rashi-num">H12</div>
-            <div class="rashi-sign">Aries</div>
-            <div class="rashi-planets">—</div>
-          </div>
-          <div class="rashi-cell">
-            <div class="rashi-num">H1</div>
-            <div class="rashi-sign">Taurus</div>
-            <div class="rashi-planets">—</div>
-          </div>
-          <div class="rashi-cell">
-            <div class="rashi-num">H2</div>
-            <div class="rashi-sign">Gemini</div>
-            <div class="rashi-planets">—</div>
-          </div>
-          <div class="rashi-cell">
-            <div class="rashi-num">H3</div>
-            <div class="rashi-sign">Cancer</div>
-            <div class="rashi-planets">☿ ☽</div>
-          </div>
-          <!-- Row 2: H11, [center x2], H4 -->
-          <div class="rashi-cell">
-            <div class="rashi-num">H11</div>
-            <div class="rashi-sign">Pisces</div>
-            <div class="rashi-planets">—</div>
-          </div>
-          <div class="rashi-center" style="grid-column:2/4; grid-row:2/4">
-            <div class="rashi-center-text">
-              ॐ<br>Taurus<br>Lagna<br>
-              <span style="font-size:0.6rem;color:var(--muted)">Vrishabha</span>
-            </div>
-          </div>
-          <div class="rashi-cell">
-            <div class="rashi-num">H4</div>
-            <div class="rashi-sign">Leo</div>
-            <div class="rashi-planets">☉ ♀</div>
-          </div>
-          <!-- Row 3: H10, [center], H5 -->
-          <div class="rashi-cell">
-            <div class="rashi-num">H10</div>
-            <div class="rashi-sign">Aquarius</div>
-            <div class="rashi-planets">♄</div>
-          </div>
-          <div class="rashi-cell">
-            <div class="rashi-num">H5</div>
-            <div class="rashi-sign">Virgo</div>
-            <div class="rashi-planets">—</div>
-          </div>
-          <!-- Row 4: H9, H8, H7, H6 -->
-          <div class="rashi-cell">
-            <div class="rashi-num">H9</div>
-            <div class="rashi-sign">Capricorn</div>
-            <div class="rashi-planets">♂ ♃</div>
-          </div>
-          <div class="rashi-cell">
-            <div class="rashi-num">H8</div>
-            <div class="rashi-sign">Sagittarius</div>
-            <div class="rashi-planets">☊</div>
-          </div>
-          <div class="rashi-cell">
-            <div class="rashi-num">H7</div>
-            <div class="rashi-sign">Scorpio</div>
-            <div class="rashi-planets">—</div>
-          </div>
-          <div class="rashi-cell">
-            <div class="rashi-num">H6</div>
-            <div class="rashi-sign">Libra</div>
-            <div class="rashi-planets">☋</div>
-          </div>
-        </div>
+    <div class="hero-title">Your Cosmic Blueprint</div>
+    <div class="hero-subtitle">Vedic Birth Chart · 5-Year Forecast</div>
+    <div class="hero-details">Kathmandu, Nepal &nbsp;·&nbsp; 18 July 2006 &nbsp;·&nbsp; 03:10 AM<br>Lat 27°42′N &nbsp;·&nbsp; Lon 85°19′E &nbsp;·&nbsp; UTC+5:45</div>
+    <div class="trinity-grid">
+      <div class="trinity-card" onclick="showPage('page-chart')">
+        <div class="trinity-label">Ascendant (Lagna)</div>
+        <div class="trinity-value">Taurus</div>
+        <div class="trinity-sub">Vrishabha · Fixed Earth</div>
       </div>
-      <p style="text-align:center;font-size:0.8rem;color:var(--muted);font-style:italic">
-        ☉ Sun · ☽ Moon · ♂ Mars · ♃ Jupiter · ♄ Saturn · ♀ Venus · ☿ Mercury · ☊ Rahu · ☋ Ketu
-      </p>
+      <div class="trinity-card" onclick="showPage('page-chart')">
+        <div class="trinity-label">Moon Sign</div>
+        <div class="trinity-value">Virgo</div>
+        <div class="trinity-sub">Kanya · Mutable Earth</div>
+      </div>
+      <div class="trinity-card" onclick="showPage('page-chart')">
+        <div class="trinity-label">Sun Sign</div>
+        <div class="trinity-value">Cancer</div>
+        <div class="trinity-sub">Karka · Cardinal Water</div>
+      </div>
     </div>
+    <div class="scroll-hint">↓ explore your chart ↓</div>
+  </div>
+  <div class="overview-grid">
+    <div class="ov-card fade-up" onclick="showPage('page-chart')"><span class="ov-icon">🌌</span><div class="ov-title">Birth Chart Anatomy</div><div class="ov-body">Explore your Rashi and Navamsa charts with planetary positions, house lords, and powerful Dhana Yoga identified.</div></div>
+    <div class="ov-card fade-up" onclick="showPage('page-dasha')" style="transition-delay:.1s"><span class="ov-icon">⏳</span><div class="ov-title">Dasha Timeline</div><div class="ov-body">Currently in Moon-Rahu antardasha, transitioning to the transformative Mars Mahadasha from November 2026.</div></div>
+    <div class="ov-card fade-up" onclick="showPage('page-career')" style="transition-delay:.2s"><span class="ov-icon">🚀</span><div class="ov-title">Career Forecast</div><div class="ov-body">Year-by-year predictions through 2030. Your peak professional window is January 2029 – February 2030.</div></div>
+    <div class="ov-card fade-up" onclick="showPage('page-wealth')" style="transition-delay:.3s"><span class="ov-icon">💎</span><div class="ov-title">Wealth & Finance</div><div class="ov-body">Jupiter-Venus Dhana Yoga promises significant wealth. Best investment periods and income timelines revealed.</div></div>
+    <div class="ov-card fade-up" onclick="showPage('page-remedies')" style="transition-delay:.4s"><span class="ov-icon">✨</span><div class="ov-title">Remedies & Guidance</div><div class="ov-body">Gemstone recommendations, mantras, and practical remedies to strengthen Saturn, Jupiter, and Mars.</div></div>
+    <div class="ov-card fade-up" style="transition-delay:.5s"><span class="ov-icon">⚡</span><div class="ov-title">Saturn in 10th House</div><div class="ov-body">Saturn in own sign Aquarius in the 10th — one of the most powerful professional placements in Vedic astrology.</div></div>
+  </div>
+</div>
 
-    <!-- Planet Positions -->
-    <div class="chart-grid reveal">
-      <div class="card">
-        <div class="card-title"><span class="icon">🌙</span> Core Identity</div>
-        <table class="planet-table">
-          <tr>
-            <th>Point</th><th>Sign</th><th>Degree</th><th>Status</th>
-          </tr>
-          <tr>
-            <td class="planet-name">Ascendant</td>
-            <td>Taurus (H1)</td><td>~14°</td>
-            <td class="good">Strong</td>
-          </tr>
-          <tr>
-            <td class="planet-name">Sun ☉</td>
-            <td>Cancer (H4)</td><td>~2°</td>
-            <td class="neutral">Neecha cancelled</td>
-          </tr>
-          <tr>
-            <td class="planet-name">Moon ☽</td>
-            <td>Cancer (H3)</td><td>~25°</td>
-            <td class="good">Exalted-adjacent</td>
-          </tr>
-          <tr>
-            <td class="planet-name">Atmakaraka</td>
-            <td>Jupiter</td><td>—</td>
-            <td class="good">Soul planet</td>
-          </tr>
-        </table>
+<!-- PAGE 2: BIRTH CHART -->
+<div id="page-chart" class="page">
+  <div class="page-header">
+    <div class="page-title">Birth Chart Analysis</div>
+    <div class="page-desc">Rashi Chart (D-1) · Taurus Ascendant · 18 July 2006 · 3:10 AM Kathmandu</div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line"></div></div>
+  </div>
+  <div class="chart-layout">
+    <div>
+      <p style="font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);text-align:center;margin-bottom:.7rem;letter-spacing:.1em;text-transform:uppercase">North Indian Style · Click any house to learn more</p>
+      <svg width="340" height="340" viewBox="0 0 340 340" style="border:1.5px solid rgba(201,168,76,.3);background:rgba(7,3,15,.95);cursor:pointer;display:block;">
+        <line x1="0" y1="0" x2="170" y2="170" stroke="rgba(201,168,76,.15)" stroke-width=".5"/>
+        <line x1="340" y1="0" x2="170" y2="170" stroke="rgba(201,168,76,.15)" stroke-width=".5"/>
+        <line x1="0" y1="340" x2="170" y2="170" stroke="rgba(201,168,76,.15)" stroke-width=".5"/>
+        <line x1="340" y1="340" x2="170" y2="170" stroke="rgba(201,168,76,.15)" stroke-width=".5"/>
+        <rect x="85" y="85" width="170" height="170" fill="none" stroke="rgba(201,168,76,.15)" stroke-width=".5"/>
+        <line x1="85" y1="0" x2="85" y2="340" stroke="rgba(201,168,76,.1)" stroke-width=".5"/>
+        <line x1="255" y1="0" x2="255" y2="340" stroke="rgba(201,168,76,.1)" stroke-width=".5"/>
+        <line x1="0" y1="85" x2="340" y2="85" stroke="rgba(201,168,76,.1)" stroke-width=".5"/>
+        <line x1="0" y1="255" x2="340" y2="255" stroke="rgba(201,168,76,.1)" stroke-width=".5"/>
+        <!-- H1 Taurus LAGNA -->
+        <polygon points="85,0 255,0 170,85" fill="rgba(139,26,58,.1)" stroke="rgba(201,168,76,.2)" stroke-width=".5" onclick="showHouse(1)" style="cursor:pointer"/>
+        <text x="170" y="22" text-anchor="middle" font-family="'Cinzel',serif" font-size="10.5" fill="#c0234a">★ 1 — Lagna</text>
+        <text x="170" y="36" text-anchor="middle" font-family="'Crimson Pro',serif" font-size="10" fill="#a8b8d0" font-style="italic">Taurus</text>
+        <!-- H2 Gemini Venus -->
+        <polygon points="255,0 340,0 340,85" fill="rgba(7,3,15,0)" stroke="rgba(201,168,76,.2)" stroke-width=".5" onclick="showHouse(2)" style="cursor:pointer"/>
+        <text x="308" y="24" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#6a6258">2</text>
+        <text x="308" y="36" text-anchor="middle" font-family="'Crimson Pro',serif" font-size="9.5" fill="#a8b8d0" font-style="italic">Gemini</text>
+        <text x="308" y="48" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9" fill="#c9a84c">Ve</text>
+        <!-- H3 Cancer Su Me Ra -->
+        <polygon points="340,0 340,170 255,85" fill="rgba(7,3,15,0)" stroke="rgba(201,168,76,.2)" stroke-width=".5" onclick="showHouse(3)" style="cursor:pointer"/>
+        <text x="310" y="100" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#6a6258">3</text>
+        <text x="310" y="113" text-anchor="middle" font-family="'Crimson Pro',serif" font-size="9.5" fill="#a8b8d0" font-style="italic">Cancer</text>
+        <text x="310" y="125" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9" fill="#c9a84c">Su Me Ra</text>
+        <!-- H4 Leo -->
+        <polygon points="340,170 340,340 255,255" fill="rgba(7,3,15,0)" stroke="rgba(201,168,76,.2)" stroke-width=".5" onclick="showHouse(4)" style="cursor:pointer"/>
+        <text x="310" y="212" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#6a6258">4</text>
+        <text x="310" y="225" text-anchor="middle" font-family="'Crimson Pro',serif" font-size="9.5" fill="#a8b8d0" font-style="italic">Leo</text>
+        <!-- H5 Virgo Moon -->
+        <polygon points="340,340 255,340 255,255" fill="rgba(7,3,15,0)" stroke="rgba(201,168,76,.2)" stroke-width=".5" onclick="showHouse(5)" style="cursor:pointer"/>
+        <text x="296" y="308" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#6a6258">5</text>
+        <text x="296" y="320" text-anchor="middle" font-family="'Crimson Pro',serif" font-size="9.5" fill="#a8b8d0" font-style="italic">Virgo</text>
+        <text x="296" y="332" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9" fill="#c9a84c">Mo</text>
+        <!-- H6 Libra -->
+        <polygon points="255,340 85,340 170,255" fill="rgba(7,3,15,0)" stroke="rgba(201,168,76,.2)" stroke-width=".5" onclick="showHouse(6)" style="cursor:pointer"/>
+        <text x="170" y="296" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#6a6258">6</text>
+        <text x="170" y="308" text-anchor="middle" font-family="'Crimson Pro',serif" font-size="9.5" fill="#a8b8d0" font-style="italic">Libra</text>
+        <!-- H7 Scorpio Ma Ke -->
+        <polygon points="85,340 0,340 0,255" fill="rgba(7,3,15,0)" stroke="rgba(201,168,76,.2)" stroke-width=".5" onclick="showHouse(7)" style="cursor:pointer"/>
+        <text x="40" y="305" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#6a6258">7</text>
+        <text x="40" y="317" text-anchor="middle" font-family="'Crimson Pro',serif" font-size="9.5" fill="#a8b8d0" font-style="italic">Scorpio</text>
+        <text x="40" y="329" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9" fill="#c9a84c">Ma Ke</text>
+        <!-- H8 Sagittarius -->
+        <polygon points="0,340 0,170 85,255" fill="rgba(7,3,15,0)" stroke="rgba(201,168,76,.2)" stroke-width=".5" onclick="showHouse(8)" style="cursor:pointer"/>
+        <text x="30" y="223" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#6a6258">8</text>
+        <text x="30" y="235" text-anchor="middle" font-family="'Crimson Pro',serif" font-size="9" fill="#a8b8d0" font-style="italic">Sagitt.</text>
+        <!-- H9 Capricorn -->
+        <polygon points="0,170 0,0 85,85" fill="rgba(7,3,15,0)" stroke="rgba(201,168,76,.2)" stroke-width=".5" onclick="showHouse(9)" style="cursor:pointer"/>
+        <text x="30" y="100" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#6a6258">9</text>
+        <text x="30" y="112" text-anchor="middle" font-family="'Crimson Pro',serif" font-size="9" fill="#a8b8d0" font-style="italic">Capric.</text>
+        <!-- H10 Aquarius Saturn ★ -->
+        <polygon points="0,0 85,0 85,85" fill="rgba(26,58,122,.12)" stroke="rgba(201,168,76,.25)" stroke-width=".5" onclick="showHouse(10)" style="cursor:pointer"/>
+        <text x="42" y="22" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#6a9be8">10 ★</text>
+        <text x="42" y="34" text-anchor="middle" font-family="'Crimson Pro',serif" font-size="9" fill="#a8b8d0" font-style="italic">Aquar.</text>
+        <text x="42" y="46" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9" fill="#c9a84c">Sa</text>
+        <!-- H11 Pisces Jupiter ★ -->
+        <polygon points="85,85 85,0 170,0 170,85" fill="rgba(40,160,90,.08)" stroke="rgba(201,168,76,.2)" stroke-width=".5" onclick="showHouse(11)" style="cursor:pointer"/>
+        <text x="127" y="36" text-anchor="middle" font-family="'Cinzel',serif" font-size="10" fill="#28a05a">11 ★</text>
+        <text x="127" y="48" text-anchor="middle" font-family="'Crimson Pro',serif" font-size="9" fill="#a8b8d0" font-style="italic">Pisces</text>
+        <text x="127" y="60" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9" fill="#28a05a">Ju</text>
+        <!-- H12 Aries -->
+        <polygon points="85,85 170,85 170,0 85,0" fill="rgba(7,3,15,0)" stroke="rgba(201,168,76,.1)" stroke-width=".5" onclick="showHouse(12)" style="cursor:pointer"/>
+        <!-- center label -->
+        <text x="170" y="163" text-anchor="middle" font-family="'Cinzel',serif" font-size="9" fill="rgba(201,168,76,.25)" letter-spacing="3">RASHI</text>
+        <text x="170" y="177" text-anchor="middle" font-family="'Cinzel',serif" font-size="9" fill="rgba(201,168,76,.25)" letter-spacing="3">CHART</text>
+      </svg>
+      <div id="house-info" style="margin-top:1rem;background:var(--card-bg);border:1px solid var(--border-bright);padding:1rem;min-height:70px;display:none">
+        <div id="hi-title" style="font-family:'Cinzel',serif;font-size:.88rem;color:var(--gold);margin-bottom:.3rem"></div>
+        <div id="hi-body" style="font-size:12.5px;color:var(--text-secondary);line-height:1.6"></div>
       </div>
-
-      <div class="card">
-        <div class="card-title"><span class="icon">⚡</span> Career Planets</div>
-        <table class="planet-table">
-          <tr><th>Planet</th><th>House</th><th>Sign</th><th>Status</th></tr>
-          <tr>
-            <td class="planet-name">Saturn ♄</td>
-            <td>H10</td><td>Aquarius</td>
-            <td class="good">Own sign! Powerful</td>
-          </tr>
-          <tr>
-            <td class="planet-name">10th Lord ♄</td>
-            <td>H10</td><td>Aquarius</td>
-            <td class="good">Yogakaraka</td>
-          </tr>
-          <tr>
-            <td class="planet-name">Sun ☉</td>
-            <td>H4</td><td>Cancer (Leo)</td>
-            <td class="neutral">Debilitated-adj</td>
-          </tr>
-          <tr>
-            <td class="planet-name">Mars ♂</td>
-            <td>H9</td><td>Capricorn</td>
-            <td class="good">Exalted!</td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="card">
-        <div class="card-title"><span class="icon">💰</span> Wealth Planets</div>
-        <table class="planet-table">
-          <tr><th>Planet</th><th>House</th><th>Sign</th><th>Status</th></tr>
-          <tr>
-            <td class="planet-name">Jupiter ♃</td>
-            <td>H9</td><td>Capricorn</td>
-            <td class="bad">Debilitated*</td>
-          </tr>
-          <tr>
-            <td class="planet-name">Venus ♀</td>
-            <td>H4</td><td>Leo</td>
-            <td class="neutral">Lagna Lord</td>
-          </tr>
-          <tr>
-            <td class="planet-name">2nd Lord ♂</td>
-            <td>H9</td><td>Capricorn</td>
-            <td class="good">Exalted! Dhana</td>
-          </tr>
-          <tr>
-            <td class="planet-name">11th Lord ♃</td>
-            <td>H9</td><td>Capricorn</td>
-            <td class="neutral">Neecha Bhanga*</td>
-          </tr>
-        </table>
-        <p style="font-size:0.78rem;color:var(--muted);margin-top:0.7rem;font-style:italic">*Jupiter's debilitation is cancelled (Neecha Bhanga Raj Yoga) by exalted Mars in same sign — a powerful wealth yoga.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-title"><span class="icon">✨</span> Special Yogas</div>
-        <div style="display:flex;flex-direction:column;gap:0.7rem;margin-top:0.3rem">
-          <div style="padding:0.7rem;background:rgba(201,168,76,0.06);border-radius:6px;border-left:2px solid var(--gold)">
-            <div style="font-family:'Cinzel',serif;font-size:0.72rem;color:var(--gold);margin-bottom:0.2rem">NEECHA BHANGA RAJ YOGA</div>
-            <div style="font-size:0.88rem">Jupiter debilitated in Capricorn → cancelled by exalted Mars in same sign. Converts weakness to royal power over time.</div>
-          </div>
-          <div style="padding:0.7rem;background:rgba(201,168,76,0.06);border-radius:6px;border-left:2px solid var(--gold)">
-            <div style="font-family:'Cinzel',serif;font-size:0.72rem;color:var(--gold);margin-bottom:0.2rem">SATURN YOGAKARAKA</div>
-            <div style="font-size:0.88rem">For Taurus lagna, Saturn rules both 9th and 10th — double fortune. Placed in own sign (Aquarius) in H10 — extraordinary career authority.</div>
-          </div>
-          <div style="padding:0.7rem;background:rgba(201,168,76,0.06);border-radius:6px;border-left:2px solid var(--gold)">
-            <div style="font-family:'Cinzel',serif;font-size:0.72rem;color:var(--gold);margin-bottom:0.2rem">DHANA YOGA (WEALTH)</div>
-            <div style="font-size:0.88rem">2nd lord (Mars, exalted) conjoins 11th lord (Jupiter) in H9 — creates Dhana Yoga promising significant wealth accumulation.</div>
-          </div>
-        </div>
+    </div>
+    <div class="planet-panel">
+      <div class="section-tag" style="margin-bottom:.8rem">Planetary Positions — click to explore</div>
+      <div class="planet-list" id="planet-list"></div>
+      <div class="planet-detail" id="planet-detail">
+        <div class="pd-title" id="pd-title"></div>
+        <div class="pd-body" id="pd-body"></div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- ══════════════ DASHA ══════════════ -->
-<section id="dasha" style="background:rgba(8,8,24,0.5)">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Planetary Periods</div>
-      <h2 class="section-title">Mahadasha & Antardasha</h2>
-      <div class="section-rule"></div>
+  <div class="yoga-section fade-up">
+    <div class="section-header">
+      <div class="section-tag">Special Planetary Combinations</div>
+      <div class="section-h2">Yogas in Your Chart</div>
     </div>
+    <div class="yoga-grid" id="yoga-grid"></div>
+  </div>
+</div>
 
-    <div class="chart-grid reveal">
-      <div class="card">
-        <div class="card-title"><span class="icon">🔮</span> Vimshottari Dasha Timeline</div>
-        <div class="dasha-timeline">
-          <div class="dasha-item">
-            <div class="dasha-period">2006 → 2022</div>
-            <div class="dasha-lord">Jupiter Mahadasha (16 years)</div>
-            <div class="dasha-note">Formation years — education, identity building</div>
-          </div>
-          <div class="dasha-item current">
-            <div class="dasha-period">2022 → 2041</div>
-            <div class="dasha-lord">Saturn Mahadasha (19 years) <span class="current-badge">ACTIVE</span></div>
-            <div class="dasha-note">Karmic harvest — career establishment, real-world power</div>
-          </div>
-          <div class="dasha-item future">
-            <div class="dasha-period">2041 → 2047</div>
-            <div class="dasha-lord">Mercury Mahadasha (17 years)</div>
-            <div class="dasha-note">Intellectual mastery, communications, business expansion</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title"><span class="icon">⏳</span> Saturn Sub-Periods (Antar) 2025–2030</div>
-        <div class="dasha-timeline">
-          <div class="dasha-item current">
-            <div class="dasha-period">Oct 2022 → Nov 2025</div>
-            <div class="dasha-lord">Saturn–Saturn <span class="current-badge">NOW</span></div>
-            <div class="dasha-note">Intense discipline, foundation-laying, hard work rewarded</div>
-          </div>
-          <div class="dasha-item future">
-            <div class="dasha-period">Nov 2025 → Nov 2028</div>
-            <div class="dasha-lord">Saturn–Mercury</div>
-            <div class="dasha-note">Academic brilliance, tech career breakthrough, networks</div>
-          </div>
-          <div class="dasha-item future">
-            <div class="dasha-period">Nov 2028 → Oct 2029</div>
-            <div class="dasha-lord">Saturn–Ketu</div>
-            <div class="dasha-note">Spiritual recalibration; avoid overextension</div>
-          </div>
-          <div class="dasha-item future">
-            <div class="dasha-period">Oct 2029 → Aug 2032</div>
-            <div class="dasha-lord">Saturn–Venus</div>
-            <div class="dasha-note">Creative wealth, luxury, partnerships, peak social phase</div>
-          </div>
-        </div>
+<!-- PAGE 3: DASHA -->
+<div id="page-dasha" class="page">
+  <div class="page-header">
+    <div class="page-title">Dasha Timeline</div>
+    <div class="page-desc">Vimshottari System · 120-year planetary cycle of destiny</div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line"></div></div>
+  </div>
+  <div class="dasha-page">
+    <div class="now-band">
+      <div class="now-pulse"></div>
+      <div>
+        <div class="now-text">CURRENT PERIOD — APRIL 2026</div>
+        <div class="now-detail">Moon Mahadasha · Rahu Antardasha · Active until November 2026</div>
       </div>
     </div>
-
-    <div class="card reveal" style="margin-top:1.2rem">
-      <div class="card-title"><span class="icon">⭐</span> Why Saturn Mahadasha is Transformative For You</div>
-      <p>Saturn rules your <span class="highlight">10th house (career)</span> and <span class="highlight">9th house (fortune, dharma)</span> — making it the single most powerful planet in your chart. For Taurus ascendants, Saturn is called the <em>Yogakaraka</em> — the planet that grants the most auspicious results. With Saturn <span class="highlight">placed in its own sign Aquarius in the 10th house</span>, this Mahadasha (2022–2041) is your cosmic career activation. Each sub-period will unlock different dimensions of this energy.</p>
+    <div style="margin-bottom:2rem">
+      <div style="font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.7rem">Moon Mahadasha Progress (Oct 2016 – Nov 2026)</div>
+      <div style="background:rgba(255,255,255,.06);height:6px;border-radius:3px;overflow:hidden;position:relative">
+        <div id="dasha-progress-bar" style="height:100%;background:linear-gradient(to right,var(--gold-dim),var(--gold));border-radius:3px;width:0;transition:width 1.5s ease"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:4px;font-family:'Space Mono',monospace;font-size:8px;color:var(--text-dim)"><span>Oct 2016</span><span style="color:var(--gold)">NOW ~92%</span><span>Nov 2026</span></div>
+    </div>
+    <div style="margin-bottom:2.5rem">
+      <div style="font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem">Moon MD · Antardasha Sequence</div>
+      <div class="antardasha-grid" id="antardasha-grid"></div>
+    </div>
+    <div class="section-header">
+      <div class="section-tag">Complete Mahadasha Map</div>
+      <div class="section-h2">Your Planetary Periods</div>
+    </div>
+    <div style="position:relative" id="dasha-timeline">
+      <div class="timeline-spine"></div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ══════════════ CAREER ══════════════ -->
-<section id="career">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Professional Path</div>
-      <h2 class="section-title">5-Year Career Forecast</h2>
-      <div class="section-rule"></div>
-    </div>
-
-    <div class="card reveal" style="margin-bottom:1.5rem">
-      <div class="card-title"><span class="icon">🏛️</span> Career Aptitude & Ideal Domains</div>
-      <p style="margin-bottom:1rem">Your chart reveals a <span class="highlight">rare configuration</span>: Saturn (own sign, H10) + Exalted Mars + Jupiter Neecha Bhanga in H9 + Moon in Cancer H3 (communications). This combination points toward <strong>technology, systems architecture, research, engineering, and strategic advisory</strong> roles where deep focus and long-term discipline are rewarded.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:0.5rem">
-        <span class="tag tag-career">Technology / Engineering</span>
-        <span class="tag tag-career">Data Science / AI/ML</span>
-        <span class="tag tag-career">Systems Architecture</span>
-        <span class="tag tag-career">Research & Academia</span>
-        <span class="tag tag-career">Cybersecurity</span>
-        <span class="tag tag-career">Strategic Consulting</span>
-        <span class="tag tag-career">Entrepreneurship (age 27+)</span>
-      </div>
-    </div>
-
-    <div class="chart-grid reveal">
-      <div class="card">
-        <div class="card-title"><span class="icon">📈</span> Career Strengths (Natal)</div>
-        <div class="meter-wrap">
-          <div class="meter-label"><span>DISCIPLINE & PERSISTENCE</span><span>94%</span></div>
-          <div class="meter-bar"><div class="meter-fill fill-gold" style="width:94%"></div></div>
-        </div>
-        <div class="meter-wrap">
-          <div class="meter-label"><span>TECHNICAL INTELLIGENCE</span><span>88%</span></div>
-          <div class="meter-bar"><div class="meter-fill fill-sapphire" style="width:88%"></div></div>
-        </div>
-        <div class="meter-wrap">
-          <div class="meter-label"><span>LEADERSHIP AUTHORITY</span><span>82%</span></div>
-          <div class="meter-bar"><div class="meter-fill fill-emerald" style="width:82%"></div></div>
-        </div>
-        <div class="meter-wrap">
-          <div class="meter-label"><span>COMMUNICATION SKILLS</span><span>79%</span></div>
-          <div class="meter-bar"><div class="meter-fill fill-ruby" style="width:79%"></div></div>
-        </div>
-        <div class="meter-wrap">
-          <div class="meter-label"><span>ENTREPRENEURIAL DRIVE</span><span>85%</span></div>
-          <div class="meter-bar"><div class="meter-fill fill-gold" style="width:85%"></div></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title"><span class="icon">⚠️</span> Career Watchpoints</div>
-        <div style="display:flex;flex-direction:column;gap:0.8rem">
-          <div style="padding:0.7rem;border-left:2px solid #e07070;background:rgba(224,112,112,0.05);border-radius:0 6px 6px 0">
-            <div style="color:#e07070;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.1em;margin-bottom:0.3rem">PATIENCE REQUIRED</div>
-            <div style="font-size:0.88rem">Saturn demands sustained effort over years before bestowing results. Expect slow initial progress (2025–2026) that accelerates dramatically by 2027.</div>
-          </div>
-          <div style="padding:0.7rem;border-left:2px solid #e07070;background:rgba(224,112,112,0.05);border-radius:0 6px 6px 0">
-            <div style="color:#e07070;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.1em;margin-bottom:0.3rem">AVOID SHORTCUTS</div>
-            <div style="font-size:0.88rem">Jupiter debilitation warns against cutting ethical corners for quick gain. Long-term reputation matters more than short-term wins.</div>
-          </div>
-          <div style="padding:0.7rem;border-left:2px solid #f0a030;background:rgba(240,160,48,0.05);border-radius:0 6px 6px 0">
-            <div style="color:#f0a030;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.1em;margin-bottom:0.3rem">OVERWORK RISK</div>
-            <div style="font-size:0.88rem">Saturn–Saturn period (ending Nov 2025) can trigger burnout. Build recovery habits now to sustain the extraordinary momentum coming.</div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- PAGE 4: CAREER -->
+<div id="page-career" class="page">
+  <div class="page-header">
+    <div class="page-title">Career Forecast</div>
+    <div class="page-desc">5-Year Professional Analysis · 2025 through 2030</div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line"></div></div>
   </div>
-</section>
-
-<!-- ══════════════ WEALTH ══════════════ -->
-<section id="wealth" style="background:rgba(8,8,24,0.5)">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Financial Destiny</div>
-      <h2 class="section-title">5-Year Wealth Forecast</h2>
-      <div class="section-rule"></div>
+  <div class="forecast-page">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2.5rem" class="fade-up">
+      <div style="background:var(--card-bg);padding:1.2rem;text-align:center"><div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem">10th House Lord</div><div style="font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold)">Saturn</div><div style="font-size:11px;color:var(--text-secondary);margin-top:2px">Own sign Aquarius · Exceptional strength</div></div>
+      <div style="background:var(--card-bg);padding:1.2rem;text-align:center"><div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem">Sun in 3rd House</div><div style="font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold)">Cancer</div><div style="font-size:11px;color:var(--text-secondary);margin-top:2px">With Mercury & Rahu · Communication career</div></div>
+      <div style="background:var(--card-bg);padding:1.2rem;text-align:center"><div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem">Next Mahadasha</div><div style="font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold)">Mars (Nov 2026)</div><div style="font-size:11px;color:var(--text-secondary);margin-top:2px">Career ignition begins · 7-year window</div></div>
     </div>
-
-    <div class="card reveal" style="margin-bottom:1.5rem">
-      <div class="card-title"><span class="icon">💎</span> Wealth Potential Overview</div>
-      <p>The <span class="highlight">Neecha Bhanga Raj Yoga</span> (Jupiter-Mars conjunction in H9) combined with <span class="highlight">Saturn in H10 own sign</span> creates a classic pattern of <em>"delayed but massive wealth."</em> Finances will feel constrained through ages 19–21, then begin a steady exponential climb from age 22–23 onwards. The 2nd lord (Mars, exalted) generating Dhana Yoga is a strong indicator of <span class="highlight">earned, merit-based wealth</span> — not speculation-dependent income.</p>
+    <div class="year-timeline" id="career-timeline"></div>
+    <div class="section-header fade-up" style="margin-top:3rem">
+      <div class="section-tag">Cosmic Career Alignment</div>
+      <div class="section-h2">Suitable Industries & Fields</div>
     </div>
-
-    <div class="chart-grid reveal">
-      <div class="card">
-        <div class="card-title"><span class="icon">📊</span> Wealth Trajectory</div>
-        <div class="meter-wrap" style="margin-bottom:1rem">
-          <div class="meter-label"><span>2025 (AGE 18–19)</span><span>Foundation</span></div>
-          <div class="meter-bar"><div class="meter-fill fill-sapphire" style="width:30%"></div></div>
-        </div>
-        <div class="meter-wrap" style="margin-bottom:1rem">
-          <div class="meter-label"><span>2026 (AGE 19–20)</span><span>Rising</span></div>
-          <div class="meter-bar"><div class="meter-fill fill-sapphire" style="width:45%"></div></div>
-        </div>
-        <div class="meter-wrap" style="margin-bottom:1rem">
-          <div class="meter-label"><span>2027 (AGE 20–21)</span><span>Breakthrough</span></div>
-          <div class="meter-bar"><div class="meter-fill fill-emerald" style="width:65%"></div></div>
-        </div>
-        <div class="meter-wrap" style="margin-bottom:1rem">
-          <div class="meter-label"><span>2028 (AGE 21–22)</span><span>Expansion</span></div>
-          <div class="meter-bar"><div class="meter-fill fill-gold" style="width:78%"></div></div>
-        </div>
-        <div class="meter-wrap">
-          <div class="meter-label"><span>2029 (AGE 22–23)</span><span>Peak Phase</span></div>
-          <div class="meter-bar"><div class="meter-fill fill-gold" style="width:88%"></div></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title"><span class="icon">🏆</span> Key Wealth Periods</div>
-        <div style="display:flex;flex-direction:column;gap:0.8rem">
-          <div style="padding:0.7rem;background:rgba(107,191,138,0.08);border-left:2px solid #6fbf8a;border-radius:0 6px 6px 0">
-            <div style="color:#6fbf8a;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.1em;margin-bottom:0.2rem">BEST: NOV 2025 – NOV 2028</div>
-            <div style="font-size:0.88rem">Saturn–Mercury antardasha. Strong income from skills, technology, or freelancing. Multiple income streams form.</div>
-          </div>
-          <div style="padding:0.7rem;background:rgba(107,191,138,0.08);border-left:2px solid #6fbf8a;border-radius:0 6px 6px 0">
-            <div style="color:#6fbf8a;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.1em;margin-bottom:0.2rem">EXCELLENT: OCT 2029 – 2032</div>
-            <div style="font-size:0.88rem">Saturn–Venus antardasha. Partnership gains, luxury, creative monetization, possible property acquisition.</div>
-          </div>
-          <div style="padding:0.7rem;background:rgba(224,112,112,0.08);border-left:2px solid #e07070;border-radius:0 6px 6px 0">
-            <div style="color:#e07070;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.1em;margin-bottom:0.2rem">CAUTION: NOV 2028 – OCT 2029</div>
-            <div style="font-size:0.88rem">Saturn–Ketu antardasha. Avoid major investments or loans. Consolidate; do not overextend.</div>
-          </div>
-          <div style="padding:0.7rem;background:rgba(201,168,76,0.06);border-left:2px solid var(--gold);border-radius:0 6px 6px 0">
-            <div style="color:var(--gold);font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.1em;margin-bottom:0.2rem">WINDFALL POTENTIAL: 2027</div>
-            <div style="font-size:0.88rem">Jupiter transit over natal Saturn (H10) creates Raj Yoga activation — possible prize, scholarship, or business windfall.</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="direction-grid fade-up" id="direction-grid"></div>
   </div>
-</section>
+</div>
 
-<!-- ══════════════ YEAR-BY-YEAR ══════════════ -->
-<section id="yearly">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Chronological Forecast</div>
-      <h2 class="section-title">Year-by-Year Predictions</h2>
-      <div class="section-rule"></div>
-    </div>
-
-    <div class="reveal">
-      <div class="year-tabs">
-        <button class="year-tab active" onclick="showYear('y2025')">2025</button>
-        <button class="year-tab" onclick="showYear('y2026')">2026</button>
-        <button class="year-tab" onclick="showYear('y2027')">2027</button>
-        <button class="year-tab" onclick="showYear('y2028')">2028</button>
-        <button class="year-tab" onclick="showYear('y2029')">2029</button>
-      </div>
-
-      <!-- 2025 -->
-      <div class="year-content active" id="y2025">
-        <div class="card">
-          <div class="year-header">
-            <div class="year-num">2025</div>
-            <div>
-              <div class="year-title">The Foundation Year — Discipline Builds the Throne</div>
-              <div class="year-dasha">Saturn Mahadasha · Saturn Antardasha (until Nov 2025) → Saturn–Mercury (from Nov 2025)</div>
-            </div>
-          </div>
-          <div class="forecast-grid">
-            <div class="forecast-block">
-              <div class="forecast-block-title">💼 Career</div>
-              <p>This is the final year of the grueling Saturn–Saturn double period. Hard work feels relentless but <span class="highlight">every seed planted now yields tenfold returns after November</span>. Academic performance and technical skill-building are your primary career accelerants. Hackathons, internships, and open-source contributions create the portfolio that opens premium doors in late 2025. Avoid job-hopping instincts; depth over breadth.</p>
-            </div>
-            <div class="forecast-block">
-              <div class="forecast-block-title">💰 Finance</div>
-              <p>Income is limited but meaningful — scholarships, internship stipends, or gig projects are possible. <span class="highlight">Financial wisdom develops here.</span> Build the habit of saving even small amounts. Avoid debt or large commitments until November 2025. After November, first serious income streams may begin forming through skills in technology or design.</p>
-            </div>
-          </div>
-          <div class="forecast-block" style="margin-bottom:1rem">
-            <div class="forecast-block-title">📅 Key Monthly Timing</div>
-            <div class="timing-row"><div class="timing-month">JAN–MAR</div><div class="timing-event">Academic intensity peak. Study mode optimal. Avoid distractions.</div></div>
-            <div class="timing-row"><div class="timing-month">APR–JUN</div><div class="timing-event">Best window for internship applications, hackathons, competitive entries. Mars transit favors boldness.</div></div>
-            <div class="timing-row"><div class="timing-month">JUL–SEP</div><div class="timing-event">Project work, portfolio building. Financial caution advised — Saturn sensitized.</div></div>
-            <div class="timing-row"><div class="timing-month">OCT–DEC</div><div class="timing-event"><span class="highlight">Major shift in Nov 2025.</span> Saturn–Mercury begins. New opportunities in technology, communication, writing. A major academic or professional recognition possible.</div></div>
-          </div>
-          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-            <span class="tag tag-career">Skill building</span>
-            <span class="tag tag-career">Internship hunt</span>
-            <span class="tag tag-wealth">Save aggressively</span>
-            <span class="tag tag-caution">No large debt</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2026 -->
-      <div class="year-content" id="y2026">
-        <div class="card">
-          <div class="year-header">
-            <div class="year-num">2026</div>
-            <div>
-              <div class="year-title">The Mercury Ignition — Intellect Becomes Currency</div>
-              <div class="year-dasha">Saturn Mahadasha · Mercury Antardasha (Nov 2025 – Nov 2028)</div>
-            </div>
-          </div>
-          <div class="forecast-grid">
-            <div class="forecast-block">
-              <div class="forecast-block-title">💼 Career</div>
-              <p>Saturn–Mercury is an extraordinary combination for <span class="highlight">technology, engineering, data science, and AI careers</span> — your natural domain. This year marks the <em>first real professional breakthrough</em>. Expect significant recognition in competitive arenas, a high-quality internship offer, or an unexpected mentorship from an influential figure. Communication skills sharpen dramatically — you begin expressing technical ideas with unusual clarity and persuasion.</p>
-            </div>
-            <div class="forecast-block">
-              <div class="forecast-block-title">💰 Finance</div>
-              <p>First meaningful income arrives. <span class="highlight">Freelancing, internship stipends, or hackathon prizes</span> may collectively generate 3–5x the income of 2025. Open a dedicated investment account or SIP by mid-2026 — even small amounts compounded over Saturn Mahadasha (until 2041) will be substantial. This is the year to learn personal finance formally.</p>
-            </div>
-          </div>
-          <div class="forecast-block" style="margin-bottom:1rem">
-            <div class="forecast-block-title">📅 Key Monthly Timing</div>
-            <div class="timing-row"><div class="timing-month">JAN–MAR</div><div class="timing-event">Mercury's influence fully activates. Academic brilliance peaks. Apply for prestigious programs, fellowships, or competitions early.</div></div>
-            <div class="timing-row"><div class="timing-month">APR–MAY</div><div class="timing-event"><span class="highlight">Career breakthrough window.</span> A pivotal opportunity (job, project, collaborator) appears. Act decisively.</div></div>
-            <div class="timing-row"><div class="timing-month">JUN–AUG</div><div class="timing-event">Network expansion. International connections or remote work opportunities possible. Strong period for public visibility.</div></div>
-            <div class="timing-row"><div class="timing-month">SEP–DEC</div><div class="timing-event">Consolidation and financial planning. Begin structured savings. Minor health vigilance needed in October.</div></div>
-          </div>
-          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-            <span class="tag tag-career">First real income</span>
-            <span class="tag tag-career">Tech breakthrough</span>
-            <span class="tag tag-wealth">Start investing</span>
-            <span class="tag tag-spiritual">Mentor connection</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2027 -->
-      <div class="year-content" id="y2027">
-        <div class="card">
-          <div class="year-header">
-            <div class="year-num">2027</div>
-            <div>
-              <div class="year-title">The Ascension Year — Raj Yoga Activates</div>
-              <div class="year-dasha">Saturn Mahadasha · Mercury Antardasha · Jupiter transits H10</div>
-            </div>
-          </div>
-          <div class="forecast-grid">
-            <div class="forecast-block">
-              <div class="forecast-block-title">💼 Career</div>
-              <p>This is <span class="highlight">the most significant career year in the 2025–2030 window.</span> Jupiter transits Aquarius (your 10th house) in 2027, directly activating natal Saturn — triggering your Raj Yoga. Expect a career-defining moment: a major job offer, promotion, startup launch, or prestigious recognition. Saturn–Mercury antardasha adds analytical precision. You may begin being seen as a <em>domain expert or thought leader</em> in your field despite your age.</p>
-            </div>
-            <div class="forecast-block">
-              <div class="forecast-block-title">💰 Finance</div>
-              <p>Income <span class="highlight">may double or triple</span> compared to 2026. A windfall is possible — prize money, acquisition offer for a project, high-value contract, or scholarship. The Dhana Yoga (Mars+Jupiter in H9) is activated by this transit. <span class="highlight">Best year to begin serious wealth-building</span>: index funds, SIPs, or property research. Do not spend windfall impulsively.</p>
-            </div>
-          </div>
-          <div class="forecast-block" style="margin-bottom:1rem">
-            <div class="forecast-block-title">📅 Key Monthly Timing</div>
-            <div class="timing-row"><div class="timing-month">JAN–MAR</div><div class="timing-event">Early year momentum from late-2026 carries forward. Collaborative projects yield surprising results.</div></div>
-            <div class="timing-row"><div class="timing-month">APR–JUN</div><div class="timing-event"><span class="highlight">PEAK WINDOW.</span> Jupiter transits directly over natal Saturn H10. Maximum career visibility. Apply for anything audacious — the timing supports it.</div></div>
-            <div class="timing-row"><div class="timing-month">JUL–SEP</div><div class="timing-event">Wealth inflection point. Income structures stabilize. Consider a financial advisor consultation.</div></div>
-            <div class="timing-row"><div class="timing-month">OCT–DEC</div><div class="timing-event">Relationship and partnership opportunities emerge alongside career growth. Collaborative ventures highly favored.</div></div>
-          </div>
-          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-            <span class="tag tag-career">Raj Yoga peak</span>
-            <span class="tag tag-career">Expert recognition</span>
-            <span class="tag tag-wealth">Potential windfall</span>
-            <span class="tag tag-wealth">Wealth architecture</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2028 -->
-      <div class="year-content" id="y2028">
-        <div class="card">
-          <div class="year-header">
-            <div class="year-num">2028</div>
-            <div>
-              <div class="year-title">Expansion & Transition — Scaling What Was Built</div>
-              <div class="year-dasha">Saturn Mahadasha · Mercury Antardasha (ending Nov 2028) → Saturn–Ketu begins</div>
-            </div>
-          </div>
-          <div class="forecast-grid">
-            <div class="forecast-block">
-              <div class="forecast-block-title">💼 Career</div>
-              <p>First half of 2028 continues the Mercury antardasha brilliance — career is in full expansion mode. Strong year for <span class="highlight">entrepreneurial moves, team leadership, or advanced education</span> (Masters, certifications). However, in November 2028, Saturn–Ketu antardasha begins — this is a <em>transition period requiring inner recalibration</em>. Don't force new launches in last quarter; consolidate existing wins instead.</p>
-            </div>
-            <div class="forecast-block">
-              <div class="forecast-block-title">💰 Finance</div>
-              <p>Income remains high through October 2028. <span class="highlight">Create financial buffers before November</span> — Ketu periods can bring unexpected expenses or disruptions. Best months for property consideration or large purchases: February–July 2028. Review investment portfolio mid-year. Avoid speculative trading or cryptocurrency gambling in Q4.</p>
-            </div>
-          </div>
-          <div class="forecast-block" style="margin-bottom:1rem">
-            <div class="forecast-block-title">📅 Key Monthly Timing</div>
-            <div class="timing-row"><div class="timing-month">JAN–MAR</div><div class="timing-event">Excellent for career advancement, salary negotiations, and client acquisition. Strong analytical clarity.</div></div>
-            <div class="timing-row"><div class="timing-month">APR–JUN</div><div class="timing-event">Team-building or hiring phase possible if entrepreneurial. International opportunity window opens.</div></div>
-            <div class="timing-row"><div class="timing-month">JUL–OCT</div><div class="timing-event"><span class="highlight">Build reserves.</span> Finalize large decisions before October 31st. Mercury antardasha ends; transition begins.</div></div>
-            <div class="timing-row"><div class="timing-month">NOV–DEC</div><div class="timing-event">Saturn–Ketu begins. Slow down, reflect. Inner restlessness possible. Do not make impulsive career changes.</div></div>
-          </div>
-          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-            <span class="tag tag-career">Leadership roles</span>
-            <span class="tag tag-wealth">Build buffers</span>
-            <span class="tag tag-caution">Careful Q4</span>
-            <span class="tag tag-spiritual">Inner reset coming</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2029 -->
-      <div class="year-content" id="y2029">
-        <div class="card">
-          <div class="year-header">
-            <div class="year-num">2029</div>
-            <div>
-              <div class="year-title">The Ketu Chrysalis → Venus Renaissance</div>
-              <div class="year-dasha">Saturn–Ketu (until Oct 2029) → Saturn–Venus (Oct 2029 onwards)</div>
-            </div>
-          </div>
-          <div class="forecast-grid">
-            <div class="forecast-block">
-              <div class="forecast-block-title">💼 Career</div>
-              <p>First three quarters under Saturn–Ketu demand <em>strategic patience</em>. Avoid launching major new ventures; instead, <span class="highlight">deepen expertise, write, teach, or mentor</span>. Hidden preparation during this phase will be rewarded explosively when Saturn–Venus begins in October 2029. Venus as Lagna Lord activating H10 Saturn creates a <span class="highlight">peak creative and commercial period</span> — the best of both artistry and material success.</p>
-            </div>
-            <div class="forecast-block">
-              <div class="forecast-block-title">💰 Finance</div>
-              <p>January–September: maintain existing income, avoid new ventures. <span class="highlight">From October 2029: Saturn–Venus is among the most wealth-productive periods in your entire life.</span> This combination favors luxury goods, real estate, creative businesses, and partnership income. The Neecha Bhanga Raj Yoga begins to fully manifest — the rewards of years of Saturn labor arrive. A significant financial milestone is possible before year-end.</p>
-            </div>
-          </div>
-          <div class="forecast-block" style="margin-bottom:1rem">
-            <div class="forecast-block-title">📅 Key Monthly Timing</div>
-            <div class="timing-row"><div class="timing-month">JAN–MAR</div><div class="timing-event">Deep work phase. Research, write, build quietly. Excellent time for spiritual practices and self-reflection.</div></div>
-            <div class="timing-row"><div class="timing-month">APR–JUN</div><div class="timing-event">Ketu influence: unexpected endings or redirections. Stay grounded. Health requires attention (see below).</div></div>
-            <div class="timing-row"><div class="timing-month">JUL–SEP</div><div class="timing-event">Transition energy: closing one chapter, preparing for the next. Clear old debts and relationship obligations.</div></div>
-            <div class="timing-row"><div class="timing-month">OCT–DEC</div><div class="timing-event"><span class="highlight">RENAISSANCE BEGINS.</span> Saturn–Venus ignites. New creative or commercial venture with high profit potential. Relationships flourish. Public image elevates dramatically.</div></div>
-          </div>
-          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-            <span class="tag tag-spiritual">Deep wisdom</span>
-            <span class="tag tag-caution">Patience Jan–Sep</span>
-            <span class="tag tag-career">Renaissance Oct+</span>
-            <span class="tag tag-wealth">Peak wealth begins</span>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- PAGE 5: WEALTH -->
+<div id="page-wealth" class="page">
+  <div class="page-header">
+    <div class="page-title">Wealth & Finance</div>
+    <div class="page-desc">Dhana Yoga · Income Forecasts · Investment Guidance</div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line"></div></div>
   </div>
-</section>
-
-<!-- ══════════════ HEALTH & LIFE ══════════════ -->
-<section id="health" style="background:rgba(8,8,24,0.5)">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Supporting Life Areas</div>
-      <h2 class="section-title">Health, Relationships & Soul Path</h2>
-      <div class="section-rule"></div>
+  <div class="wealth-page">
+    <div class="wealth-yoga-banner fade-up">
+      <div class="wyb-title">⭐ Jupiter–Venus Dhana Yoga — Classical Wealth Combination</div>
+      <div class="wyb-body">Jupiter in the 11th house (own sign Pisces) and Venus in the 2nd house as Lagna lord constitute a classical Dhana Yoga — a rare and powerful wealth combination. This yoga ensures significant financial prosperity, particularly between ages 20–30. The question is not whether wealth comes, but how wisely you channel it.</div>
     </div>
-
-    <div class="pillar-grid reveal">
-      <div class="card">
-        <div class="card-title"><span class="icon">🫀</span> Health Overview (2025–2030)</div>
-        <p style="margin-bottom:1rem">Your Taurus ascendant with Saturn's aspect over the 4th house (heart/chest) warrants attention to <span class="highlight">respiratory health, stress management, and throat/neck area</span>. The Moon in Cancer H3 indicates an emotional-physical connection — stress, especially Saturn-period pressure, can manifest as digestive or chest issues.</p>
-        <div style="display:flex;flex-direction:column;gap:0.7rem">
-          <div class="timing-row" style="border-color:rgba(201,168,76,0.1)">
-            <div class="timing-month" style="color:#e07070">WATCH</div>
-            <div class="timing-event">Oct 2026, Apr–Jun 2029: Energy dips. Avoid overworking. Prioritize sleep and hydration.</div>
-          </div>
-          <div class="timing-row" style="border-color:rgba(201,168,76,0.1)">
-            <div class="timing-month" style="color:#6fbf8a">BEST</div>
-            <div class="timing-event">2027: Vitality and energy peak alongside career success. Physical fitness investment pays dividends.</div>
-          </div>
-          <div class="timing-row" style="border-color:rgba(201,168,76,0.1)">
-            <div class="timing-month">REMEDY</div>
-            <div class="timing-event">Daily pranayama (10 min), avoid stimulants/erratic sleep during Ketu antardasha (2028-29).</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title"><span class="icon">💫</span> Relationships & Family (Brief)</div>
-        <p style="margin-bottom:1rem">Venus as Lagna Lord in H4 (home, mother) creates deep family bonds. Moon in Cancer strengthens emotional intelligence. <span class="highlight">Romantic relationships become serious post-2027</span> when Saturn–Mercury's professional focus softens into Saturn–Venus's romantic warmth.</p>
-        <div style="display:flex;flex-direction:column;gap:0.7rem">
-          <div class="timing-row" style="border-color:rgba(201,168,76,0.1)">
-            <div class="timing-month">2025–26</div>
-            <div class="timing-event">Professional friendships form that later become valuable partnerships. Family support is essential.</div>
-          </div>
-          <div class="timing-row" style="border-color:rgba(201,168,76,0.1)">
-            <div class="timing-month">2027–28</div>
-            <div class="timing-event">Meaningful romantic connection possible. A partner who shares intellectual values is likely.</div>
-          </div>
-          <div class="timing-row" style="border-color:rgba(201,168,76,0.1)">
-            <div class="timing-month">2029–30</div>
-            <div class="timing-event">Saturn–Venus activates 7th house energy. Serious partnership or engagement is astrologically supported.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title"><span class="icon">🌌</span> Soul Purpose & Spiritual Path</div>
-        <p style="margin-bottom:1rem">Ketu in Sagittarius H8 (occult, transformation) opposite Rahu in Gemini H2 (knowledge, communication as path to abundance) suggests your soul's mission is to <span class="highlight">acquire deep technical/philosophical knowledge and share it for material and spiritual upliftment</span>. Teaching, writing, and building systems that outlast you are karmic imperatives.</p>
-        <p class="em">Saturn Mahadasha is also a profoundly karmic period — service, discipline, and integrity build the spiritual merit that unlocks the Raj Yoga's full potential.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-title"><span class="icon">🎯</span> 5-Year Life Themes</div>
-        <div style="display:flex;flex-direction:column;gap:0.6rem">
-          <div style="display:flex;gap:0.8rem;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(201,168,76,0.08)">
-            <span style="color:var(--gold);font-family:'Cinzel',serif;font-size:0.7rem;min-width:50px">2025</span>
-            <span style="font-size:0.9rem">Build the craft. Discipline above all else.</span>
-          </div>
-          <div style="display:flex;gap:0.8rem;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(201,168,76,0.08)">
-            <span style="color:var(--gold);font-family:'Cinzel',serif;font-size:0.7rem;min-width:50px">2026</span>
-            <span style="font-size:0.9rem">Let the mind be your income. Technology is the medium.</span>
-          </div>
-          <div style="display:flex;gap:0.8rem;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(201,168,76,0.08)">
-            <span style="color:var(--gold);font-family:'Cinzel',serif;font-size:0.7rem;min-width:50px">2027</span>
-            <span style="font-size:0.9rem">Claim your domain. The universe rewards audacity this year.</span>
-          </div>
-          <div style="display:flex;gap:0.8rem;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(201,168,76,0.08)">
-            <span style="color:var(--gold);font-family:'Cinzel',serif;font-size:0.7rem;min-width:50px">2028</span>
-            <span style="font-size:0.9rem">Scale carefully. Protect what was built.</span>
-          </div>
-          <div style="display:flex;gap:0.8rem;align-items:center;padding:0.5rem 0">
-            <span style="color:var(--gold);font-family:'Cinzel',serif;font-size:0.7rem;min-width:50px">2029</span>
-            <span style="font-size:0.9rem">Surrender, transform, then rise in splendor.</span>
-          </div>
-        </div>
-      </div>
+    <div class="wealth-chart-wrap fade-up">
+      <div class="chart-title">Relative Income Growth Potential · 2025–2030</div>
+      <div class="bar-chart" id="wealth-bars"></div>
     </div>
+    <div class="section-header fade-up">
+      <div class="section-tag">Financial Phase Analysis</div>
+      <div class="section-h2">Wealth Journey Phases</div>
+    </div>
+    <div class="phase-grid fade-up" id="wealth-phases"></div>
+    <div class="section-header fade-up">
+      <div class="section-tag">Planetary Wealth Strategy</div>
+      <div class="section-h2">Investment Guidance</div>
+    </div>
+    <div class="invest-grid fade-up" id="invest-grid"></div>
   </div>
-</section>
+</div>
 
-<!-- ══════════════ REMEDIES ══════════════ -->
-<section id="remedies">
-  <div class="wrap">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Practical Guidance</div>
-      <h2 class="section-title">Gemstones, Mantras & Remedies</h2>
-      <div class="section-rule"></div>
-    </div>
-
-    <!-- Gemstones -->
-    <div class="section-header reveal" style="margin-bottom:1.5rem">
-      <div class="section-eyebrow" style="margin-bottom:0.3rem">Recommended Gemstones</div>
-    </div>
-    <div class="gem-grid reveal">
-      <div class="gem-card gem-ruby">
-        <div class="gem-icon">💎</div>
-        <div class="gem-name">Blue Sapphire (Neelam)</div>
-        <div class="gem-planet">Saturn — Yogakaraka for Taurus Lagna</div>
-        <div class="gem-desc">The most powerful gemstone for your chart. Saturn owns H9 and H10 — Neelam enhances career authority, discipline, and long-term wealth. Worn in the middle finger of the right hand, set in silver or iron, on a Saturday.</div>
-        <div class="gem-weight">Minimum 4–5 Ratti · High quality, no flaws</div>
-      </div>
-      <div class="gem-card gem-emerald">
-        <div class="gem-icon">💚</div>
-        <div class="gem-name">Emerald (Panna)</div>
-        <div class="gem-planet">Mercury — Intelligence & Communication</div>
-        <div class="gem-desc">Especially powerful during Saturn–Mercury antardasha (Nov 2025–Nov 2028). Enhances analytical ability, writing, coding skills, and business communication. Worn in the little finger, set in gold, on a Wednesday.</div>
-        <div class="gem-weight">Minimum 3–4 Ratti · Colombian or Zambian</div>
-      </div>
-      <div class="gem-card gem-pearl">
-        <div class="gem-icon">🤍</div>
-        <div class="gem-name">Pearl (Moti)</div>
-        <div class="gem-planet">Moon — Emotional Stability & Intuition</div>
-        <div class="gem-desc">Moon in Cancer H3 is strong but sensitive. Pearl strengthens emotional resilience, intuition, and public relations skills — all valuable in a competitive career. Worn in the ring finger, set in silver, on a Monday.</div>
-        <div class="gem-weight">Minimum 5–7 Ratti · Natural, not cultured</div>
-      </div>
-      <div class="gem-card gem-sapphire">
-        <div class="gem-icon">🔴</div>
-        <div class="gem-name">Red Coral (Moonga)</div>
-        <div class="gem-planet">Mars — Exalted in H9 (Wealth & Fortune)</div>
-        <div class="gem-desc">Mars exalted in H9 is your Dhana Yoga planet. Red Coral activates this powerful yoga, enhancing drive, courage, and wealth accumulation. Especially effective during Ketu antardasha (2028–2029) to maintain vitality.</div>
-        <div class="gem-weight">Minimum 6–9 Ratti · Italian or Japanese</div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Mantras -->
-    <div class="reveal">
-      <div class="section-eyebrow" style="text-align:center;margin-bottom:1.5rem">Sacred Mantras</div>
-      <div class="chart-grid">
-        <div class="card">
-          <div class="card-title"><span class="icon">🪐</span> Saturn Mantra (Primary)</div>
-          <div class="mantra-box">
-            <div class="mantra-devanagari">ॐ शं शनैश्चराय नमः</div>
-            <div class="mantra-transliteration">Om Sham Shanaishcharaya Namaha</div>
-            <div class="mantra-meaning">Salutation to the slow-moving one, Saturn</div>
-          </div>
-          <p style="font-size:0.88rem;color:var(--muted)">108 repetitions every Saturday morning, preferably at sunrise. Use black sesame seeds as offering. Continue throughout Saturn Mahadasha (until 2041).</p>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="icon">✨</span> Jupiter Mantra (Raj Yoga Activation)</div>
-          <div class="mantra-box">
-            <div class="mantra-devanagari">ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः</div>
-            <div class="mantra-transliteration">Om Graam Greem Graum Sah Gurave Namaha</div>
-            <div class="mantra-meaning">Salutation to Jupiter, the Guru of the Gods</div>
-          </div>
-          <p style="font-size:0.88rem;color:var(--muted)">108 times every Thursday morning. This activates your Neecha Bhanga Raj Yoga, converting Jupiter's debilitation into elevated dharmic power.</p>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="icon">🌙</span> Hanuman Chalisa (Saturn Remedy)</div>
-          <div class="mantra-box">
-            <div class="mantra-devanagari">जय हनुमान ज्ञान गुण सागर</div>
-            <div class="mantra-transliteration">Jai Hanuman Gyan Gun Sagar</div>
-            <div class="mantra-meaning">Victory to Hanuman, ocean of wisdom and virtue</div>
-          </div>
-          <p style="font-size:0.88rem;color:var(--muted)">Recite full Hanuman Chalisa every Saturday and Tuesday. Hanuman governs Saturn — this is among the most powerful remedies for Saturn Mahadasha challenges and protection.</p>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="icon">⚡</span> Gayatri Mantra (Universal Remedy)</div>
-          <div class="mantra-box">
-            <div class="mantra-devanagari">ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं<br>भर्गो देवस्य धीमहि<br>धियो यो नः प्रचोदयात्</div>
-            <div class="mantra-transliteration">Om Bhur Bhuvah Svah Tat Savitur Varenyam...</div>
-            <div class="mantra-meaning">We meditate upon the divine light of the Sun</div>
-          </div>
-          <p style="font-size:0.88rem;color:var(--muted)">108 times daily at sunrise. Neutralizes Sun's debilitation in Cancer and enhances overall spiritual protection and mental clarity.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Practical Remedies -->
-    <div class="reveal">
-      <div class="section-eyebrow" style="text-align:center;margin-bottom:1.5rem">Practical Remedies & Actions</div>
-      <div class="remedy-list">
-        <div class="remedy-item">
-          <div class="remedy-num">01</div>
-          <div class="remedy-text"><strong>Feed black crows or dogs on Saturdays</strong> — a traditional Shani (Saturn) remedy. Offering black sesame seeds, black lentils, or oil to needy animals/people on Saturdays reduces karmic debt and smoothens Saturn Mahadasha obstacles.</div>
-        </div>
-        <div class="remedy-item">
-          <div class="remedy-num">02</div>
-          <div class="remedy-text"><strong>Visit a Shiva temple every Monday morning</strong> — pour water (jalabhishek) on the Shivalinga. Shiva governs Saturn's higher nature; this remedy enhances career blessings and reduces obstacles in your professional path.</div>
-        </div>
-        <div class="remedy-item">
-          <div class="remedy-num">03</div>
-          <div class="remedy-text"><strong>Donate to education-related causes on Thursdays</strong> — books, stationery, or fees for underprivileged students. This activates Jupiter's charitable dimension and triggers the Neecha Bhanga Raj Yoga's full wealth potential.</div>
-        </div>
-        <div class="remedy-item">
-          <div class="remedy-num">04</div>
-          <div class="remedy-text"><strong>Practice digital/physical fasting one day per week</strong> — ideally Saturday. Saturn rewards austerity and discipline. Even a short fast or social media detox builds the mental muscle Saturn demands for its greatest rewards.</div>
-        </div>
-        <div class="remedy-item">
-          <div class="remedy-num">05</div>
-          <div class="remedy-text"><strong>Favorable launch dates (Muhurta)</strong> — For career moves, use Wednesdays (Mercury) or Saturdays (Saturn) when both are strong. Avoid Tuesdays for major financial decisions. April–June 2027 is the most auspicious window for launching anything major in the 5-year period.</div>
-        </div>
-        <div class="remedy-item">
-          <div class="remedy-num">06</div>
-          <div class="remedy-text"><strong>Wear dark blue or black on Saturdays, green on Wednesdays, yellow on Thursdays</strong> — color therapy aligned with planetary energies amplifies their positive influence in subtle but measurable ways according to Vedic tradition.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Final Note -->
-    <div class="card reveal" style="margin-top:3rem;text-align:center;background:linear-gradient(135deg,rgba(201,168,76,0.07),rgba(8,8,24,0.95))">
-      <div style="font-family:'Cinzel Decorative',serif;font-size:1.1rem;color:var(--gold2);margin-bottom:1rem">A Final Note from the Stars</div>
-      <p style="max-width:700px;margin:0 auto;color:var(--silver);line-height:1.9">Your chart carries an unusual convergence of Saturn Yogakaraka, Exalted Mars, and Neecha Bhanga Raj Yoga — a combination that astrologers describe as "<em>the warrior who becomes the king through relentless discipline.</em>" The next five years will test your patience and commitment, but the cosmic architecture is unambiguously in your favor. The stars do not promise ease — they promise that your effort will not be wasted.</p>
-      <div style="margin-top:1.5rem;font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.3em;color:var(--muted)">श्रद्धावान् लभते ज्ञानम् · The faithful obtain wisdom</div>
-    </div>
+<!-- PAGE 6: REMEDIES -->
+<div id="page-remedies" class="page">
+  <div class="page-header">
+    <div class="page-title">Remedies & Guidance</div>
+    <div class="page-desc">Gemstones · Mantras · Daily Practices · Auspicious Timings</div>
+    <div class="divider"><div class="divider-line"></div><div class="divider-gem"></div><div class="divider-line"></div></div>
   </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-title">Jyotish Shastra · Vedic Astrology Report</div>
-    <p>Prepared for: 18 July 2006 · 3:10 AM · Kathmandu, Nepal · Taurus Ascendant</p>
-    <p style="margin-top:0.5rem;color:#555;font-size:0.75rem">This report is for spiritual guidance and self-reflection. Consult a certified Jyotishi for detailed chart rectification.</p>
+  <div class="remedies-page">
+    <div class="section-header fade-up"><div class="section-tag">Gemstone Therapy</div><div class="section-h2">Recommended Stones</div></div>
+    <div class="gem-showcase fade-up" id="gem-showcase"></div>
+    <div class="section-header fade-up"><div class="section-tag">Japa Practice</div><div class="section-h2">Sacred Mantras</div></div>
+    <div class="fade-up" id="mantra-section"></div>
+    <div class="section-header fade-up"><div class="section-tag">Practical Rituals</div><div class="section-h2">Daily & Weekly Practices</div></div>
+    <div class="remedy-list fade-up" id="remedy-list"></div>
+    <div class="section-header fade-up"><div class="section-tag">Muhurta Guidance</div><div class="section-h2">Favorable Decision Windows</div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1.5rem;margin-bottom:4rem" class="fade-up" id="muhurta-grid"></div>
   </div>
-</footer>
+</div>
+
+<div class="bottom-nav">
+  <button class="bnav-btn active" id="bnav-hero" onclick="showPage('page-hero')">Overview</button>
+  <button class="bnav-btn" id="bnav-chart" onclick="showPage('page-chart')">Chart</button>
+  <button class="bnav-btn" id="bnav-dasha" onclick="showPage('page-dasha')">Dasha</button>
+  <button class="bnav-btn" id="bnav-career" onclick="showPage('page-career')">Career</button>
+  <button class="bnav-btn" id="bnav-wealth" onclick="showPage('page-wealth')">Wealth</button>
+  <button class="bnav-btn" id="bnav-remedies" onclick="showPage('page-remedies')">Remedies</button>
+  <button class="bnav-btn" onclick="location.href='health.html'">Health</button>
+  <button class="bnav-btn" onclick="location.href='summary.html'">Summary</button>
+</div>
 
 <script>
-  // ── Stars ──
-  const starsEl = document.getElementById('stars');
-  for (let i = 0; i < 220; i++) {
-    const s = document.createElement('div');
-    s.className = 'star';
-    const sz = Math.random() * 2.5 + 0.5;
-    s.style.cssText = `
-      left:${Math.random()*100}%;
-      top:${Math.random()*100}%;
-      width:${sz}px; height:${sz}px;
-      --d:${(Math.random()*4+2).toFixed(1)}s;
-      --o1:${(Math.random()*0.5+0.1).toFixed(2)};
-      --o2:${(Math.random()*0.4+0.6).toFixed(2)};
-      animation-delay:${(Math.random()*6).toFixed(1)}s;
-    `;
-    starsEl.appendChild(s);
-  }
+const PLANETS=[{symbol:'☉',name:'Sun',placement:'Cancer · 3rd House · 1°54′',badge:'neutral',btext:'Neutral',color:'#f4a030',detail:'Sun in Cancer in the 3rd house with Mercury and Rahu gives intense drive in communication and intellectual pursuits. As lord of the 4th house, Sun here indicates ambition through creative self-expression. The Sun-Rahu conjunction amplifies ambition, creates an unconventional boundary-pushing personality, and opens foreign or non-traditional career paths. Excellent for media, research, writing, and communication-based professions.'},{symbol:'☽',name:'Moon',placement:'Virgo · 5th House · 19°22′',badge:'neutral',btext:'Beneficial',color:'#c0d0f0',detail:'Moon in Virgo in the 5th house gives an analytical, detail-oriented mind with strong practical intelligence. The 5th house governs education, creativity, and intelligence — Moon here strengthens all three. In Virgo, Moon makes you methodical, service-oriented, and excellent at systematic problem-solving. As current Mahadasha lord, Moon governs your present phase: intellectual development, emotional growth, and creative exploration.'},{symbol:'♂',name:'Mars',placement:'Scorpio · 7th House · 15°40′',badge:'strong',btext:'Own Sign',color:'#d04040',detail:'Mars in Scorpio in its own sign in the 7th house is exceptionally powerful. The 7th house governs public-facing career, business dealings, and contracts. A strong Mars here gives tremendous competitive drive, investigative ability, and power to transform challenges into victories. Mars is your upcoming Mahadasha lord (2026–2033) — the primary engine of your career launch and wealth building. Ketu conjunct Mars adds spiritual depth and research ability.'},{symbol:'☿',name:'Mercury',placement:'Cancer · 3rd House · 14°17′',badge:'neutral',btext:'Neutral',color:'#40c080',detail:'Mercury in Cancer gives an emotionally intelligent, empathetic communication style. In the 3rd house — Mercury\'s natural domain — it thrives. As lord of the 2nd and 5th houses for Taurus Lagna, Mercury rules both wealth accumulation and intelligence. This dual rulership creates potential for earning through communication skills, creative intelligence, and intellectual work.'},{symbol:'♀',name:'Venus',placement:'Gemini · 2nd House · 28°09′',badge:'kendra',btext:'Lagna Lord',color:'#f0a0e0',detail:'Venus is the most important planet for Taurus Lagna — it rules the ascendant itself. In the 2nd house of wealth and speech in Gemini, Venus activates financial accumulation, pleasant speech, and material comfort. Venus also rules the 6th house and in the 2nd suggests income through service, communication businesses, or creative work. In the Navamsa, Venus is exalted in Pisces — confirming financial and relational blessings are karmically guaranteed.'},{symbol:'♃',name:'Jupiter',placement:'Pisces · 11th House · 10°33′',badge:'strong',btext:'Own Sign',color:'#e0b840',detail:'Jupiter in its own sign Pisces in the 11th house of gains is one of the finest wealth placements in Vedic astrology. The 11th house governs income, social networks, fulfillment of desires, and large gains. With Jupiter in own sign here, all areas are greatly amplified. Combined with Venus in the 2nd house, this creates the powerful Dhana Yoga (wealth combination) promising significant financial prosperity, particularly in your 20s and 30s.'},{symbol:'♄',name:'Saturn',placement:'Aquarius · 10th House · 4°17′',badge:'own',btext:'Own Sign',color:'#6080c0',detail:'Saturn in its own sign Aquarius in the 10th house is the single most powerful placement in this chart. Saturn rules the 9th and 10th houses for Taurus Lagna — making it both the fortune planet AND the career planet simultaneously. Own sign in the 10th grants unshakeable professional standing, rise through disciplined effort, and authority roles. This is the placement of CEOs and master builders. Career rise may start slowly but becomes real, lasting, and substantial.'},{symbol:'☊',name:'Rahu',placement:'Cancer · 3rd House · 21°28′',badge:'neutral',btext:'Amplifier',color:'#9060b0',detail:'Rahu in Cancer in the 3rd house conjunct Sun and Mercury amplifies ambition and creates unconventional thinking. Rahu supercharges the Sun-Mercury combination, making you intensely driven toward communication, media, research, and technology. Rahu also connects you to foreign opportunities. During Mars-Rahu antardasha (2027–2029), this energy becomes particularly explosive for career advancement.'},{symbol:'☋',name:'Ketu',placement:'Scorpio · 7th House · 21°28′',badge:'neutral',btext:'Spiritualizer',color:'#8090a0',detail:'Ketu in Scorpio in the 7th house with Mars gives deep spiritual and investigative inclinations. Ketu suggests a soul with past-life knowledge in research, medicine, or occult sciences. In partnerships, Ketu indicates unusual dynamics and tendency to feel unfulfilled in conventional relationships. Positively: Ketu amplifies Mars\'s investigative abilities, making you exceptionally skilled in research, data analysis, engineering, or any field requiring penetrating intelligence.'}];
+const YOGAS=[{name:'Jupiter–Venus Dhana Yoga',strength:92,desc:'Jupiter in the 11th (own sign Pisces) + Venus in the 2nd (lagna lord). Classical wealth combination of the highest order. Financial prosperity is karmically assured, especially ages 20–35.'},{name:'Saturn 10th House Raj Yoga',strength:95,desc:'Saturn as lord of the 10th in own sign Aquarius in the 10th house. Powerful Raj Yoga indicating authority, professional distinction, and lasting career achievement.'},{name:'Rahu-Sun 3rd House Conjunction',strength:72,desc:'Sun and Rahu together in the 3rd amplify ambition and drive. Creates unconventional, boundary-pushing personality with potential for fame through communication or technology.'},{name:'Mars in Own Sign (7th)',strength:80,desc:'Mars in Scorpio — own sign — in the 7th house. Powerful competitive drive and investigative ability. Key indicator for entrepreneurial and competitive success.'},{name:'Mercury 2nd & 5th Lord',strength:68,desc:'Mercury rules both the 2nd (wealth) and 5th (intelligence) houses and is in the 3rd. Income through intellectual work, communication, and creative intelligence is strongly indicated.'},{name:'Hamsa Yoga (Partial)',strength:65,desc:'Jupiter in own sign Pisces in the 11th constitutes a partial Hamsa Yoga — one of the Pancha Mahapurusha Yogas. Bestows wisdom, humanitarian inclinations, and large-scale success.'}];
+const DASHAS=[{planet:'Moon',period:'Oct 2016 – Nov 2026',years:'10 yrs',color:'#c0d0f0',dotColor:'#8090c0',body:'Moon Mahadasha spans school years through early adulthood. Moon in Virgo activates intellect, analytical ability, education, and emotional growth. This is a preparatory phase — skills built now become career assets in the next period. Career is nascent; focus is on higher education, self-discovery, and building competence.'},{planet:'Mars',period:'Nov 2026 – Nov 2033',years:'7 yrs',color:'#d04040',dotColor:'#d04040',body:'Your most important Mahadasha of the coming decade. Mars in Scorpio (own sign) in the 7th launches intense career activity, competitive achievement, and significant income growth. This is the period of your first real professional position, entrepreneurial ventures, and rapid advancement. Channel Mars energy with discipline — it rewards bold, strategic action.'},{planet:'Rahu',period:'Nov 2033 – Nov 2051',years:'18 yrs',color:'#9060b0',dotColor:'#9060b0',body:'The 18-year Rahu Mahadasha will be the defining period of your professional life. Rahu in Cancer in the 3rd with Sun and Mercury promises unconventional success, foreign connections, technology-driven career, and boundary-breaking. This is the period where legacy-level wealth and recognition become possible.'},{planet:'Jupiter',period:'Nov 2051 – Nov 2067',years:'16 yrs',color:'#e0b840',dotColor:'#e0b840',body:'Jupiter Mahadasha in the far future — a period of wisdom, philanthropy, and institutional impact. Jupiter in own sign Pisces in the 11th house promises extraordinary fulfillment, large-scale achievement, and profound spiritual depth.'}];
+const ANTARDASHAS=[{planet:'Moon',period:'Oct 2016–Apr 2018',note:'Emotional foundation, family support'},{planet:'Mars',period:'Apr 2018–Jul 2019',note:'First competitive drive emerges'},{planet:'Rahu',period:'Jul 2019–Jan 2021',note:'Ambitious, restless expansion'},{planet:'Jupiter',period:'Jan 2021–May 2022',note:'Growth, learning, mentors'},{planet:'Saturn',period:'May 2022–Jul 2023',note:'Discipline, structured study'},{planet:'Mercury',period:'Jul 2023–Aug 2024',note:'Communication skills develop'},{planet:'Ketu',period:'Aug 2024–Jan 2025',note:'Introspection, spiritual search'},{planet:'Venus',period:'Jan 2025–Sep 2025',note:'Creative opportunities arise'},{planet:'Sun',period:'Sep 2025–Mar 2026',note:'Confidence, self-expression'},{planet:'Moon',period:'Mar 2026–Nov 2026',note:'Currently active — wrap-up phase',active:true}];
+const CAREER_YEARS=[{year:'2025',title:'Foundation & Preparation',dasha:'Moon–Venus/Sun Antardasha',intensity:2,body:'This is a foundational period — the final chapter of your Moon Mahadasha. Career energy is still developing, but this year is critical for laying groundwork. Focus on acquiring certifications, digital skills, and building a portfolio. Side income through freelance work (writing, tech, tutoring) is possible and should be pursued. The most important investment right now is in yourself: courses, networks, and experiences that become competitive advantages when Mars fires up in November 2026.',tags:[{t:'Education focus',c:'ctag-blue'},{t:'Skill building',c:'ctag-gold'},{t:'Side income possible',c:'ctag-green'},{t:'Avoid major gambles',c:'ctag-red'}]},{year:'2026',title:'Career Ignition — Mars Begins',dasha:'Moon → Mars Mahadasha Nov 2026',intensity:4,body:'The single most significant career transition year in this 5-year window. From November 2026, Mars Mahadasha begins — and with it, your professional life ignites. Before November: continue preparation. After November: move decisively. This is the year for competitive entrance exams, campus recruitment, first job offers, or business registration. Mars-Mars antardasha is pure Martian energy — fierce, competitive, unstoppable. First real professional income arrives.',tags:[{t:'Career launch',c:'ctag-red'},{t:'First job or business',c:'ctag-gold'},{t:'Competitive exams',c:'ctag-blue'},{t:'Bold action rewarded',c:'ctag-green'}]},{year:'2027',title:'Rapid Rise — Mars-Rahu Explosion',dasha:'Mars–Rahu Antardasha begins',intensity:5,body:'Mars-Rahu antardasha is the most explosive professional period in your entire forecast. Rahu amplifies Mars\'s ambition to an almost uncontrollable degree. Expect rapid promotions, salary jumps well above peers, relocation opportunities, exposure to cutting-edge fields, and potential for launching a startup. Saturn\'s structural presence in the 10th ensures gains are real, not ephemeral. Foreign education, multinational companies, or international clients become very relevant.',tags:[{t:'Explosive growth',c:'ctag-red'},{t:'Salary leap',c:'ctag-gold'},{t:'International angles',c:'ctag-purple'},{t:'Startup potential',c:'ctag-green'}]},{year:'2029',title:'Peak Window — Mars-Jupiter Opens',dasha:'Mars–Jupiter Antardasha (Jan 2029)',intensity:5,body:'This is the single most auspicious career and wealth period in the entire 5-year forecast — and arguably the best year of your twenties professionally. Mars-Jupiter antardasha combines competitive drive with the expansive wisdom and good fortune of Jupiter in the 11th (own sign). Expect leadership roles, management responsibility, business expansion, high-value contracts, or a significant entrepreneurial breakthrough. If employed, a senior or director-level role is realistic.',tags:[{t:'PEAK PERIOD',c:'ctag-gold'},{t:'Leadership role',c:'ctag-green'},{t:'Business scale',c:'ctag-blue'},{t:'Wealth milestone',c:'ctag-purple'}]},{year:'2030',title:'Consolidation — Legacy Building',dasha:'Mars–Saturn Antardasha',intensity:3,body:'After the explosive Jupiter antardasha, Mars-Saturn brings methodical, consolidating energy. Saturn in the 10th in own sign builds lasting professional reputation, institutional recognition, and long-term contracts. The pace may feel slower relative to 2029, but the work done in this year creates the foundation for the Rahu Mahadasha (2033+) — the defining period of your entire career. Formalize business structures, negotiate long-term arrangements.',tags:[{t:'Reputation building',c:'ctag-blue'},{t:'Institutional recognition',c:'ctag-gold'},{t:'Long-term contracts',c:'ctag-green'},{t:'Health priority',c:'ctag-red'}]}];
+const DIRECTIONS=[{icon:'💻',title:'Technology & AI',fit:'Software, Data Science, Machine Learning, Cybersecurity'},{icon:'📊',title:'Finance & Investment',fit:'Investment Banking, Crypto, Fintech, Fund Management'},{icon:'🔬',title:'Research & Analytics',fit:'Data Research, Policy Analysis, Consulting, R&D'},{icon:'⚡',title:'Engineering',fit:'Systems, Architecture, Product Engineering'},{icon:'⚖️',title:'Law & Policy',fit:'Corporate Law, Tech Policy, International Law'},{icon:'🚀',title:'Entrepreneurship',fit:'Startup Founding, Business Strategy, Venture Building'}];
+const WEALTH_BARS=[{label:'2025',value:15},{label:'2026',value:35},{label:'2027',value:62},{label:'2028',value:75},{label:'2029',value:100},{label:'2030',value:85}];
+const PHASES=[{period:'2025–2026',name:'Seed Phase',body:'Minimal income, maximum investment in skills. Build emergency fund. Avoid speculation.',cls:'p-building'},{period:'Late 2026',name:'Income Begins',body:'First real earned income. Start SIP investments immediately. Set up auto-savings.',cls:'p-strong'},{period:'2027–2028',name:'Income Surge',body:'Multiple income streams. 60% equity, 20% bonds, 20% lifestyle. Financial advisor recommended.',cls:'p-strong'},{period:'2029',name:'WEALTH PEAK',body:'Best period for major asset acquisition. Property, large investments, business capital.',cls:'p-peak'},{period:'2030',name:'Consolidation',body:'Formalize financial structures. Long-term wealth preservation begins. Portfolio review.',cls:'p-building'}];
+const INVEST=[{icon:'📈',title:'Equity / Index Funds',body:'Jupiter in 11th strongly favors equity markets. Start a monthly SIP from first income. Long-term equity aligns with your Jupiter period in the far future.'},{icon:'🏠',title:'Real Estate',body:'Saturn in 10th indicates property gains. Best window for first property: 2029 during Mars-Jupiter. Avoid premature property before 2028.'},{icon:'💰',title:'Emergency Fund First',body:'Build 6 months of expenses as liquid buffer before any other investment. Mars energy can be impulsive — this protects against reckless decisions.'},{icon:'🌐',title:'International Assets',body:'Rahu in the 3rd indicates foreign financial connections. International funds, US equity, or foreign currency accounts are favorable from 2027 onward.'}];
+const GEMS=[{name:'Blue Sapphire',sanskrit:'Neelam',planet:'Saturn · 10th House Lord',cls:'gem-card-sapphire',orbCls:'orb-sapphire',finger:'Middle finger, right hand',metal:'Silver or Panchdhatu',day:'Saturday at sunrise',weight:'4–6 carats minimum',quality:'Ceylon (Sri Lanka) or Kashmir origin',body:'Blue Sapphire is your primary power gemstone. Saturn in the 10th in own sign is your greatest planetary asset — Neelam directly amplifies this energy. Expect accelerated career recognition, professional authority, and protection from career setbacks. Critical: test for 3 days by keeping under your pillow before permanent wearing. If you experience increased clarity and positive developments, proceed.'},{name:'Yellow Sapphire',sanskrit:'Pukhraj',planet:'Jupiter · 11th House Wealth Lord',cls:'gem-card-yellow',orbCls:'orb-yellow',finger:'Index finger, right hand',metal:'Gold',day:'Thursday after sunrise',weight:'5–7 carats recommended',quality:'Sri Lanka or Burma origin',body:'Yellow Sapphire activates Jupiter in your 11th house — the planet governing income, gains, and fulfillment of desires. Wearing Pukhraj in gold on Thursday directly strengthens the Jupiter-Venus Dhana Yoga, accelerating wealth accumulation and opening influential networks. Particularly powerful during Mars-Jupiter antardasha (2029–2030). Pair with the Jupiter mantra for maximum effect.'}];
+const MANTRAS=[{text:'ॐ शं शनिश्चराय नमः',tl:'Om Sham Shanicharaya Namah',meaning:'Salutation to Saturn, the slow-moving one. Chant 108 times every Saturday before 7:30 AM. Strengthens the 10th house Saturn, accelerates professional recognition, and protects against career obstacles and setbacks.',count:'108×'},{text:'ॐ बृं बृहस्पतये नमः',tl:'Om Brim Brihaspataye Namah',meaning:'Salutation to Jupiter, the great preceptor. Chant 108 times every Thursday. Activates the wealth yoga, opens financial channels, and brings wise mentors into your life. Follow with a donation of yellow items to a temple.',count:'108×'},{text:'ॐ क्रां क्रीं क्रौं सः भौमाय नमः',tl:'Om Kram Krim Kraum Sah Bhaumaya Namah',meaning:'Salutation to Mars, the red planet. Chant 108 times every Tuesday. Becomes especially important after November 2026 when Mars Mahadasha begins. Channels Martian energy productively, preventing impulsiveness while amplifying drive.',count:'108×'}];
+const REMEDIES=[{day:'Saturday',action:'Feed black sesame or offer mustard oil to a Shiva lingam',why:'Saturn remedy — directly strengthens 10th house career energy'},{day:'Tue & Sat',action:'Visit Hanuman temple and chant Hanuman Chalisa',why:'Strengthens both Mars and Saturn — removes career obstacles'},{day:'Thursday',action:'Donate yellow lentils, turmeric, or yellow cloth',why:'Jupiter remedy — activates Dhana Yoga and wealth channels'},{day:'Daily',action:'Meditate or practice pranayama for 15 minutes at sunrise',why:'Moon in Virgo thrives with reflective practices — emotional intelligence grows'},{day:'Friday',action:'Keep home clean and offer white flowers to Venus',why:'Venus is Lagna lord — a pleased Venus brings prosperity and health'},{day:'Saturday',action:'Avoid alcohol and non-vegetarian food',why:'Maintains Saturn\'s positive influence in the 10th house'},{day:'Ongoing',action:'Keep a Shri Yantra or Jupiter yantra at your study desk',why:'Continuously activates the wealth yoga in your environment'}];
+const MUHURTAS=[{title:'Best for Career Decisions',body:'November 2026–December 2027 (Mars-Mars) and January 2029–February 2030 (Mars-Jupiter). Job acceptance, business launch, and professional agreements carry exceptional favorable energy in these windows.',icon:'🚀'},{title:'Best for Investments',body:'January 2029–February 2030 is the single best period for major financial commitments — property, business investment, or large equity positions. Avoid speculative investments before 2027.',icon:'💎'},{title:'Best for Education',body:'Now through mid-2026 during Moon Mahadasha. Moon activates the learning mind. Certifications and degrees begun now yield compounded returns when Mars fires up.',icon:'📚'},{title:'Auspicious Weekly Days',body:'Wednesday (Mercury), Thursday (Jupiter), Friday (Venus). Your three most favorable days for important meetings, launches, and decisions. Saturday is powerful for career if Saturn rituals are observed.',icon:'📅'}];
+const HOUSE_INFO={1:{title:'1st House — Lagna (Taurus)',body:'The Ascendant in Taurus gives a grounded, patient, beauty-loving, and materially focused personality. Venus rules this house — making wealth, aesthetics, and sensory experience central to your identity. You are methodical, reliable, and tend to build lasting things.'},2:{title:'2nd House — Wealth & Speech (Gemini + Venus)',body:'Venus in the 2nd house in Gemini activates wealth accumulation, charming speech, and love of luxury. Gemini makes your wealth-building versatile and intellectually driven. Income comes from communication, creative work, and intellect.'},3:{title:'3rd House — Courage & Communication (Cancer + Sun, Mercury, Rahu)',body:'Three planets here: Sun, Mercury, and Rahu in Cancer. This is the house of communication, courage, siblings, and skills. Rahu adds ambition and unconventionality — you\'ll break norms and create new paths through communication and intellectual expression.'},4:{title:'4th House — Home & Comfort (Leo)',body:'Empty 4th house in Leo. Sun rules this house — a proud, generous family background is indicated. Home may be associated with authority or status. Property gains are possible later in life, especially during Saturn-related periods.'},5:{title:'5th House — Intelligence & Creativity (Virgo + Moon)',body:'Moon in Virgo in the 5th house gives exceptional analytical intelligence and creative ability. The 5th governs education, romance, and intelligence. Moon here produces a methodical thinker with strong memory and love of learning.'},6:{title:'6th House — Service & Health (Libra)',body:'Empty 6th house in Libra. Venus rules this house — health challenges are manageable and overcome with effort. Strong ability to deal with competition. Service-oriented work (consulting, healthcare, law) can be lucrative.'},7:{title:'7th House — Partnerships (Scorpio + Mars, Ketu)',body:'Mars and Ketu in the 7th house in Scorpio. Partnerships are intense, transformative, and sometimes difficult. Business partnerships carry power — choose associates with exceptional care. Outstanding for research, medicine, and analytical fields.'},8:{title:'8th House — Transformation (Sagittarius)',body:'Empty 8th house in Sagittarius. Jupiter rules this house, indicating longevity and wisdom in handling sudden changes. Unexpected gains (inheritance, insurance) are possible, especially during Jupiter-related periods.'},9:{title:'9th House — Fortune & Philosophy (Capricorn)',body:'Empty 9th house in Capricorn. Saturn rules this house AND the 10th house, creating a powerful link between fortune and career. This means your professional rise is karmically supported through disciplined, ethical action.'},10:{title:'10th House — Career & Reputation (Aquarius + Saturn)',body:'Saturn in own sign Aquarius in the 10th — the single most important placement in this chart. Career in structured, systematic, or technology-driven fields. Rise is slow but certain, and eventual professional standing will be extraordinary.'},11:{title:'11th House — Gains & Networks (Pisces + Jupiter)',body:'Jupiter in own sign Pisces in the 11th — the second most powerful financial placement here. The 11th governs income, social networks, and fulfillment of desires. Jupiter here magnifies all of these, creating the Dhana Yoga with Venus.'},12:{title:'12th House — Foreign Lands (Aries)',body:'Empty 12th house in Aries. Mars rules this house — as your upcoming Mahadasha lord, this creates a connection between your Mars period and foreign lands. Foreign travel, international education, or work abroad is very possible during Mars Mahadasha (2026–2033).'}};
 
-  // ── Year tabs ──
-  function showYear(id) {
-    document.querySelectorAll('.year-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.year-tab').forEach(el => el.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    event.target.classList.add('active');
-  }
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  document.querySelectorAll('.bnav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const key=id.replace('page-','');
+  const n=document.getElementById('nav-'+key);if(n)n.classList.add('active');
+  const b=document.getElementById('bnav-'+key);if(b)b.classList.add('active');
+  if(id==='page-dasha')setTimeout(()=>{const bar=document.getElementById('dasha-progress-bar');if(bar)bar.style.width='92%';},300);
+  if(id==='page-career')setTimeout(()=>{document.querySelectorAll('.year-block').forEach((el,i)=>setTimeout(()=>el.classList.add('revealed'),i*120));},100);
+  if(id==='page-wealth')setTimeout(()=>{document.querySelectorAll('.bar-fill').forEach(el=>{el.style.transition='height 1.2s ease';el.style.height=el.dataset.h;});},400);
+  setTimeout(()=>{
+    document.querySelectorAll('#'+id+' .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),i*90));
+    document.querySelectorAll('#'+id+' .yoga-bar-fill').forEach(el=>setTimeout(()=>el.style.width=el.dataset.w,500));
+  },60);
+  window.scrollTo(0,0);
+  return false;
+}
 
-  // ── Scroll reveal ──
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  revealEls.forEach(el => io.observe(el));
+function showHouse(h){
+  const info=HOUSE_INFO[h];if(!info)return;
+  const panel=document.getElementById('house-info');
+  document.getElementById('hi-title').textContent=info.title;
+  document.getElementById('hi-body').textContent=info.body;
+  panel.style.display='block';
+  panel.style.animation='none';void panel.offsetWidth;panel.style.animation='fadeIn .3s ease';
+}
 
-  // ── Nav active state ──
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const navObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(l => l.classList.remove('active'));
-        const link = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
-        if (link) link.classList.add('active');
-      }
-    });
-  }, { threshold: 0.4 });
-  sections.forEach(s => navObs.observe(s));
+function buildPlanets(){
+  const c=document.getElementById('planet-list');
+  PLANETS.forEach((p,i)=>{
+    const row=document.createElement('div');row.className='planet-row';
+    row.innerHTML=`<div class="planet-symbol" style="color:${p.color}">${p.symbol}</div><div><div class="planet-name">${p.name}</div><div class="planet-placement">${p.placement}</div></div><div class="planet-badge b-${p.badge}">${p.btext}</div>`;
+    row.onclick=()=>{
+      document.querySelectorAll('.planet-row').forEach(r=>r.classList.remove('active'));row.classList.add('active');
+      const det=document.getElementById('planet-detail');
+      document.getElementById('pd-title').textContent=p.symbol+' '+p.name+' — '+p.placement;
+      document.getElementById('pd-body').textContent=p.detail;
+      det.classList.add('visible');
+    };
+    c.appendChild(row);
+  });
+}
 
-  // ── Animate meters on scroll ──
-  const meterObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.meter-fill').forEach(fill => {
-          const w = fill.style.width;
-          fill.style.width = '0';
-          setTimeout(() => { fill.style.width = w; }, 200);
-        });
-        meterObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.card').forEach(c => meterObs.observe(c));
+function buildYogas(){
+  const g=document.getElementById('yoga-grid');
+  YOGAS.forEach(y=>{
+    const card=document.createElement('div');card.className='yoga-card';
+    card.innerHTML=`<div class="yoga-name">${y.name}</div><div class="yoga-desc">${y.desc}</div><div class="yoga-strength"><span style="font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim)">Strength</span><div class="yoga-bar-track"><div class="yoga-bar-fill" data-w="${y.strength}%"></div></div><span style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold)">${y.strength}%</span></div>`;
+    g.appendChild(card);
+  });
+}
+
+function buildAntardasha(){
+  const g=document.getElementById('antardasha-grid');
+  ANTARDASHAS.forEach(a=>{
+    const card=document.createElement('div');card.className='ad-card'+(a.active?' highlight':'');
+    card.innerHTML=`<div class="ad-planet">${a.planet}</div><div class="ad-period">${a.period}</div><div class="ad-note">${a.note}</div>${a.active?'<div style="font-family:\'Space Mono\',monospace;font-size:7.5px;color:var(--gold);margin-top:4px;letter-spacing:.05em">▶ ACTIVE NOW</div>':''}`;
+    g.appendChild(card);
+  });
+}
+
+function buildDashaTL(){
+  const c=document.getElementById('dasha-timeline');
+  DASHAS.forEach((d,i)=>{
+    const entry=document.createElement('div');entry.className='dasha-entry'+(i===0?' active':'');
+    entry.innerHTML=`<div class="dasha-period-label">${d.years}<br>${d.period.split('–')[0].trim()}</div><div class="dasha-node"><div class="dasha-dot" style="color:${d.dotColor};border-color:${d.dotColor}"></div></div><div class="dasha-content"><div class="dasha-title" style="color:${d.color}">${d.planet} Mahadasha</div><div class="dasha-years">${d.period}</div><div class="dasha-body">${d.body}</div></div>`;
+    entry.onclick=()=>{document.querySelectorAll('.dasha-entry').forEach(e=>e.classList.remove('active'));entry.classList.add('active');};
+    c.appendChild(entry);
+  });
+}
+
+function buildCareer(){
+  const c=document.getElementById('career-timeline');
+  CAREER_YEARS.forEach(y=>{
+    const block=document.createElement('div');block.className='year-block';
+    const dots=Array.from({length:5},(_,i)=>`<div class="i-dot ${i<y.intensity?'lit':''}"></div>`).join('');
+    const tags=y.tags.map(t=>`<span class="ctag ${t.c}">${t.t}</span>`).join('');
+    block.innerHTML=`<div class="year-badge"><div class="year-num">${y.year}</div></div><div class="year-node"></div><div class="year-card"><div class="year-header"><div><div class="year-title">${y.title}</div><div class="year-dasha">${y.dasha}</div></div><div class="intensity-meter"><div class="intensity-label">Intensity</div><div class="intensity-dots">${dots}</div></div></div><div class="year-body">${y.body}</div><div class="career-tags">${tags}</div></div>`;
+    c.appendChild(block);
+  });
+  const dg=document.getElementById('direction-grid');
+  DIRECTIONS.forEach(d=>{
+    const card=document.createElement('div');card.className='direction-card';
+    card.innerHTML=`<span class="direction-icon">${d.icon}</span><div class="direction-title">${d.title}</div><div class="direction-fit">${d.fit}</div>`;
+    dg.appendChild(card);
+  });
+}
+
+function buildWealth(){
+  const c=document.getElementById('wealth-bars');
+  WEALTH_BARS.forEach(b=>{
+    const col=document.createElement('div');col.className='bar-col';
+    col.innerHTML=`<div class="bar-value">${b.value}%</div><div class="bar-fill" style="background:linear-gradient(to top,rgba(201,168,76,.35),rgba(201,168,76,${b.value/100}))" data-h="${b.value*1.4}px"></div><div class="bar-label">${b.label}</div>`;
+    c.appendChild(col);
+  });
+  const pg=document.getElementById('wealth-phases');
+  PHASES.forEach(p=>{
+    const card=document.createElement('div');card.className=`phase-card ${p.cls}`;
+    card.innerHTML=`<div class="phase-period">${p.period}</div><div class="phase-name">${p.name}</div><div class="phase-body">${p.body}</div>`;
+    pg.appendChild(card);
+  });
+  const ig=document.getElementById('invest-grid');
+  INVEST.forEach(c2=>{
+    const card=document.createElement('div');card.className='invest-card';
+    card.innerHTML=`<div class="invest-icon">${c2.icon}</div><div class="invest-title">${c2.title}</div><div class="invest-body">${c2.body}</div>`;
+    ig.appendChild(card);
+  });
+}
+
+function buildGems(){
+  const s=document.getElementById('gem-showcase');
+  GEMS.forEach(g=>{
+    const card=document.createElement('div');card.className=`gem-card ${g.cls}`;
+    card.innerHTML=`<div class="gem-orb ${g.orbCls}">💎</div><div class="gem-name">${g.name}</div><div class="gem-planet">${g.planet}</div><div class="gem-specs"><div class="gem-spec-item"><div class="gsl">Finger</div><div class="gsv">${g.finger}</div></div><div class="gem-spec-item"><div class="gsl">Metal</div><div class="gsv">${g.metal}</div></div><div class="gem-spec-item"><div class="gsl">Day</div><div class="gsv">${g.day}</div></div><div class="gem-spec-item"><div class="gsl">Weight</div><div class="gsv">${g.weight}</div></div><div class="gem-spec-item" style="grid-column:1/-1"><div class="gsl">Quality</div><div class="gsv">${g.quality}</div></div></div><div class="gem-body">${g.body}</div>`;
+    s.appendChild(card);
+  });
+}
+
+function buildMantras(){
+  const s=document.getElementById('mantra-section');
+  MANTRAS.forEach(m=>{
+    const card=document.createElement('div');card.className='mantra-card';
+    card.innerHTML=`<div class="mantra-count">${m.count}</div><div class="mantra-text">${m.text}</div><div class="mantra-transliteration">${m.tl}</div><div class="mantra-meaning">${m.meaning}</div>`;
+    s.appendChild(card);
+  });
+}
+
+function buildRemedies(){
+  const l=document.getElementById('remedy-list');
+  REMEDIES.forEach((r,i)=>{
+    const item=document.createElement('div');item.className='remedy-item';
+    item.innerHTML=`<div class="r-day">${r.day}</div><div><div class="r-action">${r.action}</div><div class="r-why">${r.why}</div></div><div class="r-tick" id="tick-${i}" onclick="toggleR(${i})"></div>`;
+    l.appendChild(item);
+  });
+  const mg=document.getElementById('muhurta-grid');
+  MUHURTAS.forEach(m=>{
+    const card=document.createElement('div');card.className='card-info fade-up';
+    card.innerHTML=`<div class="card-title">${m.icon} ${m.title}</div><div class="card-body">${m.body}</div>`;
+    mg.appendChild(card);
+  });
+}
+
+function toggleR(i){const t=document.getElementById('tick-'+i);t.classList.toggle('done');t.textContent=t.classList.contains('done')?'✓':'';}
+
+function buildOrbit(){
+  const c=document.getElementById('orbit-dots');
+  [{r:28,spd:8,clr:'#f4a030'},{r:53,spd:20,clr:'#c0d0f0'},{r:82,spd:35,clr:'#d04040'},{r:112,spd:50,clr:'#40c080'},{r:146,spd:80,clr:'#e0b840'}].forEach(p=>{
+    const w=document.createElement('div');
+    w.style.cssText=`position:absolute;width:${p.r*2}px;height:${p.r*2}px;top:50%;left:50%;transform:translate(-50%,-50%);animation:rotateSlow ${p.spd}s linear infinite`;
+    const d=document.createElement('div');
+    d.style.cssText=`position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:${p.clr};box-shadow:0 0 6px ${p.clr}`;
+    w.appendChild(d);c.appendChild(w);
+  });
+}
+
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');e.target.querySelectorAll('.yoga-bar-fill').forEach(f=>setTimeout(()=>f.style.width=f.dataset.w,300));}}),{threshold:.1});
+
+document.addEventListener('DOMContentLoaded',()=>{
+  buildOrbit();buildPlanets();buildYogas();buildAntardasha();buildDashaTL();buildCareer();buildWealth();buildGems();buildMantras();buildRemedies();
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  setTimeout(()=>document.querySelectorAll('#page-hero .fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),300+i*100)),500);
+});
 </script>
 </body>
 </html>

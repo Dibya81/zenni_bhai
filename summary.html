@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Summary — Cosmic Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--cosmos:#03010a;--gold:#c9a84c;--gold-light:#e8c97a;--gold-dim:#7a6230;--silver:#a8b8d0;--ruby:#c0234a;--sapphire-light:#2a5abf;--emerald-light:#28a05a;--text-primary:#f0e8d8;--text-secondary:#a8a090;--text-dim:#6a6258;--border:rgba(201,168,76,0.15);--border-bright:rgba(201,168,76,0.4);--card-bg:rgba(21,13,46,0.7);--card-border:rgba(201,168,76,0.2);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cosmos);color:var(--text-primary);font-family:'Crimson Pro',Georgia,serif;font-size:17px;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(1px 1px at 15% 20%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 60% 35%,rgba(255,255,255,.7) 0%,transparent 100%),radial-gradient(1px 1px at 85% 65%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(2px 2px at 40% 80%,rgba(201,168,76,.2) 0%,transparent 100%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 50%,rgba(21,13,46,.4) 0%,transparent 70%);pointer-events:none;z-index:0;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:60px;background:rgba(3,1,10,.9);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);}
+.nav-brand{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;}
+.nav-back{font-family:'Space Mono',monospace;font-size:9px;color:var(--text-dim);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
+.nav-back:hover{color:var(--gold);}
+.print-btn{font-family:'Space Mono',monospace;font-size:9px;padding:6px 14px;border:1px solid rgba(201,168,76,.3);background:rgba(201,168,76,.06);color:var(--gold);cursor:pointer;letter-spacing:.08em;text-transform:uppercase;transition:all .2s;}
+.print-btn:hover{background:rgba(201,168,76,.12);}
+
+.page{min-height:100vh;padding-top:60px;position:relative;z-index:1;}
+.main{max-width:900px;margin:0 auto;padding:2.5rem 2rem 6rem;}
+
+/* Header block */
+.report-header{text-align:center;padding:3rem 2rem 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem;position:relative;}
+.rh-ornament{font-size:2.5rem;margin-bottom:.8rem;display:block;animation:pulse 4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{text-shadow:0 0 20px rgba(201,168,76,.4)}50%{text-shadow:0 0 40px rgba(201,168,76,.8)}}
+.rh-title{font-family:'Cinzel',serif;font-size:2.5rem;color:var(--gold);letter-spacing:.1em;margin-bottom:.3rem;}
+.rh-sub{font-family:'Cinzel',serif;font-size:1rem;color:var(--silver);letter-spacing:.25em;text-transform:uppercase;margin-bottom:1.5rem;}
+.rh-meta{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--text-dim);letter-spacing:.08em;line-height:2.2;}
+.rh-border{width:60px;height:1px;background:var(--gold-dim);margin:1.5rem auto 0;}
+
+/* Core identity */
+.identity-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2rem;}
+.identity-cell{background:var(--card-bg);padding:1.3rem;text-align:center;}
+.ic-label{font-family:'Space Mono',monospace;font-size:8px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem;}
+.ic-value{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold);}
+.ic-sub{font-size:11px;color:var(--text-secondary);margin-top:2px;font-style:italic;}
+
+/* Key findings */
+.findings{margin-bottom:2rem;}
+.finding-row{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:.5px solid var(--border);}
+.finding-row:last-child{border-bottom:none;}
+.f-num{font-family:'Cinzel',serif;font-size:1.6rem;color:rgba(201,168,76,.2);line-height:1;width:36px;flex-shrink:0;padding-top:2px;}
+.f-content{}
+.f-title{font-family:'Cinzel',serif;font-size:.95rem;color:var(--gold);margin-bottom:.2rem;}
+.f-body{font-size:13.5px;color:var(--text-secondary);line-height:1.65;}
+
+/* 5-year snapshot table */
+.snapshot-table{width:100%;border-collapse:collapse;margin-bottom:2.5rem;font-size:13px;}
+.snapshot-table th{font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;padding:.7rem 1rem;background:rgba(201,168,76,.04);border:.5px solid var(--border);text-align:left;}
+.snapshot-table td{padding:.75rem 1rem;border:.5px solid var(--border);background:var(--card-bg);vertical-align:top;}
+.snapshot-table tr:hover td{background:rgba(201,168,76,.04);}
+.td-year{font-family:'Cinzel',serif;font-size:.88rem;color:var(--gold);}
+.td-dasha{font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);}
+.td-career{color:var(--text-secondary);}
+.td-wealth{color:var(--text-secondary);}
+.intensity-mini{display:flex;gap:2px;margin-top:4px;}
+.im-dot{width:6px;height:6px;border-radius:50%;background:var(--border);}
+.im-dot.on{background:var(--gold);}
+
+/* Gemstones quick ref */
+.gems-quick{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;}
+.gq-card{background:var(--card-bg);border:1px solid var(--border);padding:1.3rem;display:flex;align-items:center;gap:1rem;}
+.gq-orb{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.gq-orb-s{background:radial-gradient(circle at 35% 35%,#4a7fe0,#1a3a7a);box-shadow:0 0 12px rgba(42,90,191,.4);}
+.gq-orb-g{background:radial-gradient(circle at 35% 35%,#f0d060,#c9a84c);box-shadow:0 0 12px rgba(201,168,76,.4);}
+.gq-name{font-family:'Cinzel',serif;font-size:.85rem;color:var(--gold);margin-bottom:2px;}
+.gq-spec{font-family:'Space Mono',monospace;font-size:8px;color:var(--text-dim);line-height:1.6;}
+
+/* Mantras quick */
+.mantra-quick{background:linear-gradient(135deg,rgba(201,168,76,.05),rgba(21,13,46,.8));border:1px solid rgba(201,168,76,.2);padding:1.5rem;margin-bottom:2rem;}
+.mq-title{font-family:'Cinzel',serif;font-size:.9rem;color:var(--gold);margin-bottom:1rem;letter-spacing:.05em;}
+.mq-row{display:flex;align-items:baseline;gap:1rem;padding:.5rem 0;border-bottom:.5px solid rgba(201,168,76,.08);}
+.mq-row:last-child{border-bottom:none;}
+.mq-text{font-family:'Cinzel',serif;font-size:.95rem;color:var(--text-primary);flex:1;}
+.mq-day{font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);white-space:nowrap;}
+
+/* Important dates */
+.dates-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin-bottom:2.5rem;}
+.date-card{background:var(--card-bg);border:1px solid var(--border);border-left:3px solid var(--gold-dim);padding:1rem 1.2rem;}
+.dc-date{font-family:'Cinzel',serif;font-size:.82rem;color:var(--gold);margin-bottom:3px;}
+.dc-event{font-size:13px;color:var(--text-primary);margin-bottom:2px;}
+.dc-note{font-size:11.5px;color:var(--text-secondary);}
+
+/* Footer */
+.report-footer{text-align:center;padding:2rem;border-top:1px solid var(--border);margin-top:3rem;}
+.rf-logo{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold-dim);letter-spacing:.15em;margin-bottom:.5rem;}
+.rf-note{font-family:'Space Mono',monospace;font-size:8.5px;color:var(--text-dim);letter-spacing:.06em;line-height:1.8;}
+
+/* Bottom nav */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:999;display:flex;justify-content:center;padding:.6rem;background:rgba(3,1,10,.92);backdrop-filter:blur(8px);border-top:.5px solid var(--border);gap:3px;}
+.bnav-btn{padding:5px 12px;font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;border:1px solid transparent;background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s;}
+.bnav-btn:hover{color:var(--text-secondary);border-color:var(--border);}
+.bnav-btn.active{color:var(--gold);border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.06);}
+
+.fade-up{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+@media print{
+  body{background:#fff;color:#000;font-size:13px;}
+  nav,.bottom-nav,.print-btn{display:none!important;}
+  .page{padding-top:0;}
+  :root{--gold:#8a6a1a;--text-primary:#1a1008;--text-secondary:#4a4038;--text-dim:#7a7060;--card-bg:rgba(240,230,210,.4);--border:rgba(138,106,26,.2);--border-bright:rgba(138,106,26,.4);}
+  body::before,body::after{display:none;}
+  .fade-up{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Cosmic Blueprint</div>
+  <a class="nav-back" href="index.html">← Main Chart</a>
+  <button class="print-btn" onclick="window.print()">⊕ Print / Save PDF</button>
+</nav>
+
+<div class="page">
+  <div class="main">
+
+    <div class="report-header fade-up">
+      <span class="rh-ornament">✦</span>
+      <div class="rh-title">Cosmic Blueprint</div>
+      <div class="rh-sub">Vedic Astrology — Executive Summary</div>
+      <div class="rh-meta">
+        Date of Birth: 18 July 2006 &nbsp;·&nbsp; Time: 03:10 AM &nbsp;·&nbsp; Place: Kathmandu, Nepal<br>
+        Latitude 27°42′N &nbsp;·&nbsp; Longitude 85°19′E &nbsp;·&nbsp; Timezone UTC+5:45<br>
+        Ayanamsha: Lahiri (True Chitrapaksha) &nbsp;·&nbsp; System: Vimshottari Dasha
+      </div>
+      <div class="rh-border"></div>
+    </div>
+
+    <!-- Identity -->
+    <div class="identity-row fade-up">
+      <div class="identity-cell"><div class="ic-label">Lagna (Ascendant)</div><div class="ic-value">Taurus</div><div class="ic-sub">Vrishabha · Venus-ruled</div></div>
+      <div class="identity-cell"><div class="ic-label">Rashi (Moon Sign)</div><div class="ic-value">Virgo</div><div class="ic-sub">Kanya · Mercury-ruled</div></div>
+      <div class="identity-cell"><div class="ic-label">Sun Sign</div><div class="ic-value">Cancer</div><div class="ic-sub">Karka · Moon-ruled</div></div>
+    </div>
+    <div class="identity-row fade-up" style="margin-top:1px">
+      <div class="identity-cell"><div class="ic-label">Current Mahadasha</div><div class="ic-value">Moon</div><div class="ic-sub">Until Nov 2026</div></div>
+      <div class="identity-cell"><div class="ic-label">Next Mahadasha</div><div class="ic-value">Mars</div><div class="ic-sub">Nov 2026 – Nov 2033</div></div>
+      <div class="identity-cell"><div class="ic-label">Primary Yoga</div><div class="ic-value">Dhana Yoga</div><div class="ic-sub">Jupiter + Venus combination</div></div>
+    </div>
+
+    <!-- Key Findings -->
+    <div style="font-family:'Cinzel',serif;font-size:1.4rem;color:var(--text-primary);letter-spacing:.06em;margin:2.5rem 0 1.2rem" class="fade-up">Key Astrological Findings</div>
+    <div class="findings fade-up">
+      <div class="finding-row">
+        <div class="f-num">01</div>
+        <div class="f-content"><div class="f-title">Saturn in 10th House (Own Sign Aquarius) — Exceptional Career Power</div><div class="f-body">Saturn as lord of the 10th in its own sign Aquarius in the 10th house constitutes one of the most powerful professional placements in Vedic astrology. Career rise is slow initially but certain, substantial, and lasting. Authority, institutional recognition, and long-term professional legacy are strongly indicated. This is the placement of architects, CEOs, and those who build things that endure.</div></div>
+      </div>
+      <div class="finding-row">
+        <div class="f-num">02</div>
+        <div class="f-content"><div class="f-title">Jupiter–Venus Dhana Yoga — Karmically Destined Wealth</div><div class="f-body">Jupiter in the 11th house (own sign Pisces) combined with Venus in the 2nd house as Lagna lord creates a classical Dhana Yoga of the highest order. This yoga guarantees significant wealth accumulation, particularly between ages 20–35. The peak wealth window in the 5-year forecast is January 2029 – February 2030 during Mars-Jupiter antardasha.</div></div>
+      </div>
+      <div class="finding-row">
+        <div class="f-num">03</div>
+        <div class="f-content"><div class="f-title">Mars Mahadasha (Nov 2026) — Career Ignition Point</div><div class="f-body">The transition from Moon to Mars Mahadasha in November 2026 is the single most important career event in the 5-year forecast. Mars in Scorpio (own sign) in the 7th house will activate intense competitive drive, rapid professional advancement, and significant income growth over its 7-year reign. The Mars-Mars antardasha (Nov 2026–Dec 2027) is the purest expression of this energy and the best window for career launch.</div></div>
+      </div>
+      <div class="finding-row">
+        <div class="f-num">04</div>
+        <div class="f-content"><div class="f-title">Sun-Mercury-Rahu in 3rd — Unconventional Communicator & Innovator</div><div class="f-body">Three planets in the 3rd house of communication, skills, and courage — including Rahu the amplifier — makes communication, technology, media, or intellectual work the natural career domain. The Rahu-Sun conjunction indicates an unconventional, boundary-pushing professional identity that may achieve recognition in non-traditional ways or in foreign/international contexts.</div></div>
+      </div>
+      <div class="finding-row">
+        <div class="f-num">05</div>
+        <div class="f-content"><div class="f-title">Venus in Navamsa (D-9) — Exalted in Pisces</div><div class="f-body">Venus, the most important planet for Taurus Lagna as its ruler, is exalted in Pisces in the Navamsa chart. This confirms that financial and creative gifts are real and will manifest in the material world. It also indicates a deeply fulfilling creative or aesthetic dimension to the career and relationship life, and spiritual grace accompanying material success.</div></div>
+      </div>
+    </div>
+
+    <!-- 5-Year Snapshot Table -->
+    <div style="font-family:'Cinzel',serif;font-size:1.4rem;color:var(--text-primary);letter-spacing:.06em;margin:2.5rem 0 1.2rem" class="fade-up">5-Year Snapshot (2025–2030)</div>
+    <table class="snapshot-table fade-up">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Dasha Period</th>
+          <th>Career Theme</th>
+          <th>Wealth Phase</th>
+          <th>Intensity</th>
+        </tr>
+      </thead>
+      <tbody id="snapshot-tbody"></tbody>
+    </table>
+
+    <!-- Gemstones -->
+    <div style="font-family:'Cinzel',serif;font-size:1.4rem;color:var(--text-primary);letter-spacing:.06em;margin:2.5rem 0 1.2rem" class="fade-up">Gemstone Recommendations</div>
+    <div class="gems-quick fade-up">
+      <div class="gq-card">
+        <div class="gq-orb gq-orb-s">💎</div>
+        <div>
+          <div class="gq-name">Blue Sapphire (Neelam)</div>
+          <div class="gq-spec">For Saturn (10th lord)<br>Middle finger · Right hand · Silver<br>Saturday sunrise · 4–6 carats<br>Ceylon or Kashmir origin</div>
+        </div>
+      </div>
+      <div class="gq-card">
+        <div class="gq-orb gq-orb-g">💛</div>
+        <div>
+          <div class="gq-name">Yellow Sapphire (Pukhraj)</div>
+          <div class="gq-spec">For Jupiter (11th lord)<br>Index finger · Right hand · Gold<br>Thursday sunrise · 5–7 carats<br>Sri Lanka or Burma origin</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mantras -->
+    <div style="font-family:'Cinzel',serif;font-size:1.4rem;color:var(--text-primary);letter-spacing:.06em;margin:2.5rem 0 1.2rem" class="fade-up">Daily Mantra Practice</div>
+    <div class="mantra-quick fade-up">
+      <div class="mq-title">Chant 108 times on the designated days</div>
+      <div class="mq-row"><div class="mq-text">ॐ शं शनिश्चराय नमः &nbsp;·&nbsp; Om Sham Shanicharaya Namah</div><div class="mq-day">Saturday</div></div>
+      <div class="mq-row"><div class="mq-text">ॐ बृं बृहस्पतये नमः &nbsp;·&nbsp; Om Brim Brihaspataye Namah</div><div class="mq-day">Thursday</div></div>
+      <div class="mq-row"><div class="mq-text">ॐ क्रां क्रीं क्रौं सः भौमाय नमः &nbsp;·&nbsp; Om Kram Krim Kraum Sah Bhaumaya Namah</div><div class="mq-day">Tuesday</div></div>
+    </div>
+
+    <!-- Important dates -->
+    <div style="font-family:'Cinzel',serif;font-size:1.4rem;color:var(--text-primary);letter-spacing:.06em;margin:2.5rem 0 1.2rem" class="fade-up">Critical Dates to Remember</div>
+    <div class="dates-grid fade-up" id="dates-grid"></div>
+
+    <!-- Footer -->
+    <div class="report-footer fade-up">
+      <div class="rf-logo">✦ COSMIC BLUEPRINT ✦</div>
+      <div class="rf-note">
+        Prepared using Vimshottari Dasha system · Lahiri Ayanamsha · North Indian chart style<br>
+        This report is for spiritual and self-reflection purposes only.<br>
+        Free will, effort, and character always transcend planetary influences.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <button class="bnav-btn" onclick="location.href='index.html'">← Main</button>
+  <button class="bnav-btn" onclick="location.href='health.html'">Health</button>
+  <button class="bnav-btn active">Summary</button>
+  <button class="bnav-btn print-btn" onclick="window.print()" style="position:static;border:none">🖨 Print</button>
+</div>
+
+<script>
+const SNAPSHOT = [
+  {year:'2025', dasha:'Moon–Venus/Sun AD', career:'Foundation & skill building', wealth:'Minimal — invest in self', intensity:2},
+  {year:'2026', dasha:'Moon→Mars MD (Nov)', career:'Career ignition & first launch', wealth:'First real income begins', intensity:4},
+  {year:'2027', dasha:'Mars–Rahu AD', career:'Rapid rise, promotions, foreign', wealth:'Income surge — multiple streams', intensity:5},
+  {year:'2028', dasha:'Mars–Rahu AD cont.', career:'International expansion phase', wealth:'Wealth accumulation active', intensity:5},
+  {year:'2029', dasha:'Mars–Jupiter AD (Jan)', career:'⭐ PEAK — Leadership & scale', wealth:'⭐ PEAK — Major asset window', intensity:5},
+  {year:'2030', dasha:'Mars–Saturn AD', career:'Consolidation & legacy building', wealth:'Formalize & preserve wealth', intensity:3},
+];
+
+const DATES = [
+  {date:'November 2026',event:'Mars Mahadasha Begins',note:'Most important career transition. Move decisively.'},
+  {date:'Late 2027',event:'Mars-Rahu Antardasha',note:'Explosive growth phase. Foreign opportunities peak.'},
+  {date:'January 2029',event:'Mars-Jupiter Antardasha',note:'Peak window for career and wealth. Make major moves.'},
+  {date:'February 2030',event:'Mars-Saturn Antardasha',note:'Consolidation begins. Formalize structures.'},
+  {date:'November 2033',event:'Rahu Mahadasha Begins',note:'18-year defining period. Legacy-level potential.'},
+  {date:'Every Saturday',event:'Saturn Ritual Day',note:'Mantra, sesame offering, abstinence — protect career.'},
+];
+
+function buildSnapshot(){
+  const tb=document.getElementById('snapshot-tbody');
+  SNAPSHOT.forEach(r=>{
+    const dots=Array.from({length:5},(_,i)=>`<div class="im-dot ${i<r.intensity?'on':''}"></div>`).join('');
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td><div class="td-year">${r.year}</div></td><td><div class="td-dasha">${r.dasha}</div></td><td class="td-career">${r.career}</td><td class="td-wealth">${r.wealth}</td><td><div class="intensity-mini">${dots}</div></td>`;
+    tb.appendChild(tr);
+  });
+}
+
+function buildDates(){
+  const g=document.getElementById('dates-grid');
+  DATES.forEach(d=>{
+    const card=document.createElement('div');card.className='date-card';
+    card.innerHTML=`<div class="dc-date">${d.date}</div><div class="dc-event">${d.event}</div><div class="dc-note">${d.note}</div>`;
+    g.appendChild(card);
+  });
+}
+
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+
+document.addEventListener('DOMContentLoaded',()=>{
+  buildSnapshot();buildDates();
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  setTimeout(()=>document.querySelectorAll('.fade-up').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),i*80)),200);
+});
+</script>
+</body>
+</html>
